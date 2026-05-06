@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>B2-Verben-Trainer</title>
+<title>Deutsch-B2-Trainer</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@ body {
     padding: 20px;
 }
 .box {
-    max-width: 650px;
+    max-width: 760px;
     margin: auto;
     background: white;
     padding: 25px;
@@ -22,7 +22,7 @@ h1 {
     text-align: center;
 }
 .frage {
-    font-size: 26px;
+    font-size: 25px;
     margin: 25px 0;
     text-align: center;
     font-weight: bold;
@@ -36,6 +36,9 @@ button {
     border-radius: 12px;
     background: #e8e8e8;
     cursor: pointer;
+}
+button:hover {
+    background: #d5d5d5;
 }
 .richtig {
     background: #c8f7c5 !important;
@@ -52,41 +55,88 @@ button {
     text-align: center;
     color: #555;
 }
+.meldung {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    background: #f7f7f7;
+    padding: 15px;
+    border-radius: 12px;
+}
 </style>
 </head>
 <body>
 
 <div class="box">
-<h1>B2-Verben-Trainer</h1>
-<p class="klein">Wähle das passende Verb.</p>
+<h1>Deutsch-B2-Trainer</h1>
+<p class="klein">Verben und wichtige Wörter aus dem Berufskontext.</p>
 
 <div class="info">
 Punkte: <span id="punkte">0</span> |
-Frage: <span id="nummer">1</span>/<span id="gesamt">12</span>
+Frage: <span id="nummer">1</span>/<span id="gesamt"></span>
 </div>
 
 <div class="frage" id="frage"></div>
 <div id="antworten"></div>
-<div class="info" id="meldung"></div>
+<div class="meldung" id="meldung" style="display:none;"></div>
 
 <button onclick="weiter()" id="weiterButton" style="display:none;">Weiter</button>
 </div>
 
 <script>
+var wortInfo = {
+    "unterbreiten": "„unterbreiten“ passt besonders zu: ein Angebot unterbreiten, einen Vorschlag unterbreiten.",
+    "ablehnen": "„ablehnen“ passt besonders zu: ein Angebot ablehnen, einen Antrag ablehnen, eine Bitte ablehnen.",
+    "feststellen": "„feststellen“ passt besonders zu: einen Fehler feststellen, einen Mangel feststellen, eine Abweichung feststellen.",
+    "erteilen": "„erteilen“ passt besonders zu: einen Auftrag erteilen, eine Erlaubnis erteilen, eine Genehmigung erteilen.",
+    "annehmen": "„annehmen“ passt besonders zu: ein Angebot annehmen, eine Einladung annehmen, einen Vorschlag annehmen.",
+    "einhalten": "„einhalten“ passt besonders zu: eine Frist einhalten, einen Termin einhalten, Regeln einhalten.",
+    "abhalten": "„abhalten“ passt besonders zu: eine Besprechung abhalten, eine Sitzung abhalten, ein Meeting abhalten.",
+    "einholen": "„einholen“ passt besonders zu: ein Angebot einholen, Informationen einholen, eine Auskunft einholen.",
+    "entgegennehmen": "„entgegennehmen“ passt besonders zu: eine Lieferung entgegennehmen, eine Beschwerde entgegennehmen, einen Anruf entgegennehmen.",
+    "aufgeben": "„aufgeben“ passt besonders zu: eine Bestellung aufgeben, eine Anzeige aufgeben, ein Paket aufgeben.",
+    "beheben": "„beheben“ passt besonders zu: einen Fehler beheben, einen Mangel beheben, ein Problem beheben.",
+    "begleichen": "„begleichen“ passt besonders zu: eine Rechnung begleichen, eine Schuld begleichen, einen offenen Betrag begleichen.",
+
+    "die Herausforderung": "„die Herausforderung“ bedeutet: eine schwierige Aufgabe, die man lösen muss.",
+    "sich einstellen auf": "„sich einstellen auf“ bedeutet: sich innerlich oder praktisch auf eine neue Situation vorbereiten.",
+    "sich behaupten": "„sich behaupten“ bedeutet: stark bleiben, obwohl es Konkurrenz oder Probleme gibt.",
+    "erforderlich": "„erforderlich“ bedeutet: notwendig.",
+    "erwerben": "„erwerben“ bedeutet: bekommen oder lernen, zum Beispiel Kenntnisse erwerben.",
+    "veralten": "„veralten“ bedeutet: alt und nicht mehr aktuell werden.",
+    "vertrauen auf": "„vertrauen auf“ bedeutet: glauben, dass etwas oder jemand hilft oder funktioniert.",
+    "die Neuorientierung": "„die Neuorientierung“ bedeutet: eine neue Richtung suchen, zum Beispiel beruflich.",
+    "modernisieren": "„modernisieren“ bedeutet: neuer und besser machen.",
+    "die Unterbrechung": "„die Unterbrechung“ bedeutet: eine Pause oder eine Zeit, in der etwas nicht weiterläuft."
+};
+
 var fragen = [
-    ["eine Rechnung ...", "begleichen", ["begleichen", "abhalten", "feststellen"], "Eine Rechnung begleichen bedeutet: eine Rechnung bezahlen."],
-    ["ein Angebot offiziell machen = ein Angebot ...", "unterbreiten", ["unterbreiten", "beheben", "einhalten"], "Ein Angebot unterbreiten bedeutet: offiziell ein Angebot machen."],
-    ["ein Angebot nicht akzeptieren = ein Angebot ...", "ablehnen", ["ablehnen", "erteilen", "einholen"], "Ablehnen bedeutet: Nein sagen, nicht akzeptieren."],
-    ["einen Fehler oder Mangel erkennen = einen Fehler ...", "feststellen", ["feststellen", "abhalten", "erteilen"], "Feststellen bedeutet: erkennen, dass etwas so ist."],
-    ["einen Auftrag offiziell geben = einen Auftrag ...", "erteilen", ["erteilen", "feststellen", "begleichen"], "Einen Auftrag erteilen bedeutet: offiziell sagen, dass jemand die Arbeit machen soll."],
-    ["ein Angebot akzeptieren = ein Angebot ...", "annehmen", ["annehmen", "ablehnen", "beheben"], "Annehmen bedeutet: Ja sagen, akzeptieren."],
-    ["eine Frist ...", "einhalten", ["einhalten", "unterbreiten", "ablehnen"], "Eine Frist einhalten bedeutet: rechtzeitig fertig sein."],
-    ["eine Besprechung ...", "abhalten", ["abhalten", "aufgeben", "begleichen"], "Eine Besprechung abhalten bedeutet: eine Besprechung durchführen."],
-    ["ein Angebot von einer Firma anfordern = ein Angebot ...", "einholen", ["einholen", "abhalten", "beheben"], "Ein Angebot einholen bedeutet: aktiv ein Angebot anfordern."],
-    ["eine Lieferung ...", "entgegennehmen", ["entgegennehmen", "einholen", "erteilen"], "Eine Lieferung entgegennehmen bedeutet: die Lieferung annehmen, wenn sie kommt."],
-    ["eine Bestellung ...", "aufgeben", ["aufgeben", "feststellen", "einhalten"], "Eine Bestellung aufgeben bedeutet: etwas offiziell bestellen."],
-    ["einen Mangel reparieren/lösen = einen Mangel ...", "beheben", ["beheben", "begleichen", "abhalten"], "Einen Mangel beheben bedeutet: ein Problem reparieren oder lösen."]
+    ["eine Rechnung ...", "begleichen", ["begleichen", "abhalten", "feststellen"], "Bei „eine Rechnung“ passt: begleichen. Das bedeutet: eine Rechnung bezahlen."],
+    ["ein Angebot offiziell machen = ein Angebot ...", "unterbreiten", ["unterbreiten", "beheben", "einhalten"], "Bei „ein Angebot offiziell machen“ passt: unterbreiten."],
+    ["ein Angebot nicht akzeptieren = ein Angebot ...", "ablehnen", ["ablehnen", "erteilen", "einholen"], "Bei „ein Angebot nicht akzeptieren“ passt: ablehnen."],
+    ["einen Fehler oder Mangel erkennen = einen Fehler ...", "feststellen", ["feststellen", "abhalten", "erteilen"], "Bei „einen Fehler erkennen“ passt: feststellen."],
+    ["einen Auftrag offiziell geben = einen Auftrag ...", "erteilen", ["erteilen", "feststellen", "begleichen"], "Bei „einen Auftrag offiziell geben“ passt: erteilen."],
+    ["ein Angebot akzeptieren = ein Angebot ...", "annehmen", ["annehmen", "ablehnen", "beheben"], "Bei „ein Angebot akzeptieren“ passt: annehmen."],
+    ["eine Frist ...", "einhalten", ["einhalten", "unterbreiten", "ablehnen"], "Bei „eine Frist“ passt: einhalten. Das bedeutet: rechtzeitig fertig sein."],
+    ["eine Besprechung ...", "abhalten", ["abhalten", "aufgeben", "begleichen"], "Bei „eine Besprechung“ passt: abhalten. Das bedeutet: eine Besprechung durchführen."],
+    ["ein Angebot von einer Firma anfordern = ein Angebot ...", "einholen", ["einholen", "abhalten", "beheben"], "Bei „ein Angebot anfordern“ passt: einholen."],
+    ["eine Lieferung ...", "entgegennehmen", ["entgegennehmen", "einholen", "erteilen"], "Bei „eine Lieferung“ passt: entgegennehmen."],
+    ["eine Bestellung ...", "aufgeben", ["aufgeben", "feststellen", "einhalten"], "Bei „eine Bestellung“ passt: aufgeben."],
+    ["einen Mangel reparieren/lösen = einen Mangel ...", "beheben", ["beheben", "begleichen", "abhalten"], "Bei „einen Mangel reparieren oder lösen“ passt: beheben."],
+
+    ["Was bedeutet „die Herausforderung“?", "eine schwierige Aufgabe", ["eine schwierige Aufgabe", "eine Rechnung", "eine Pause"], "„die Herausforderung“ bedeutet: eine schwierige Aufgabe, die man lösen muss."],
+    ["Unternehmen müssen sich auf neue Situationen ...", "einstellen", ["einstellen", "begleichen", "abhalten"], "Richtig ist: sich auf neue Situationen einstellen."],
+    ["Was bedeutet „sich behaupten“?", "stark bleiben trotz Konkurrenz", ["stark bleiben trotz Konkurrenz", "eine Rechnung bezahlen", "einen Termin absagen"], "„sich behaupten“ bedeutet: stark bleiben, obwohl es Konkurrenz oder Probleme gibt."],
+    ["„erforderlich“ bedeutet ...", "notwendig", ["notwendig", "freiwillig", "veraltet"], "„erforderlich“ bedeutet: notwendig."],
+    ["Kenntnisse kann man ...", "erwerben", ["erwerben", "abhalten", "begleichen"], "Kenntnisse erwerben bedeutet: Kenntnisse bekommen oder lernen."],
+    ["Wenn Wissen nicht mehr aktuell ist, ist es ...", "veraltet", ["veraltet", "erforderlich", "beglichen"], "„veraltet“ bedeutet: alt und nicht mehr aktuell."],
+    ["Man kann nicht immer auf alte Erfahrungen ...", "vertrauen", ["vertrauen", "abhalten", "beheben"], "„vertrauen auf“ bedeutet: glauben, dass etwas hilft oder funktioniert."],
+    ["Eine neue berufliche Richtung nennt man ...", "die Neuorientierung", ["die Neuorientierung", "die Rechnung", "die Besprechung"], "„die Neuorientierung“ bedeutet: eine neue berufliche Richtung."],
+    ["Eine Firma macht ihre Produktion neuer und besser. Die Firma ... ihre Produktion.", "modernisiert", ["modernisiert", "begleicht", "lehnt ab"], "„modernisieren“ bedeutet: neuer und besser machen."],
+    ["Eine Pause in einem Berufsweg nennt man ...", "die Unterbrechung", ["die Unterbrechung", "die Herausforderung", "die Rechnung"], "„die Unterbrechung“ bedeutet: eine Pause oder ein Stop in einem Ablauf."]
 ];
+
+fragen = mischen(fragen);
 
 var index = 0;
 var punkte = 0;
@@ -107,7 +157,11 @@ function zeigeFrage() {
     document.getElementById("nummer").innerText = index + 1;
     document.getElementById("gesamt").innerText = fragen.length;
     document.getElementById("frage").innerText = fragen[index][0];
-    document.getElementById("meldung").innerText = "";
+
+    var meldung = document.getElementById("meldung");
+    meldung.innerHTML = "";
+    meldung.style.display = "none";
+
     document.getElementById("weiterButton").style.display = "none";
 
     var antworten = fragen[index][2].slice();
@@ -126,12 +180,31 @@ function zeigeFrage() {
     }
 }
 
+function findeInfo(antwort) {
+    if (wortInfo[antwort]) {
+        return wortInfo[antwort];
+    }
+
+    if (antwort === "einstellen") {
+        return "„einstellen“ passt hier als Teil von: sich auf etwas einstellen.";
+    }
+    if (antwort === "modernisiert") {
+        return "„modernisiert“ kommt von „modernisieren“: neuer und besser machen.";
+    }
+    if (antwort === "vertrauen") {
+        return "„vertrauen“ passt oft mit „auf“: auf etwas vertrauen.";
+    }
+
+    return "Diese Antwort passt hier nicht so gut. Achte auf die typische Verbindung.";
+}
+
 function pruefen(button) {
     if (beantwortet) return;
     beantwortet = true;
 
     var richtigeAntwort = fragen[index][1];
     var erklaerung = fragen[index][3];
+    var gewaehlteAntwort = button.innerText;
     var alleButtons = document.querySelectorAll("#antworten button");
 
     for (var i = 0; i < alleButtons.length; i++) {
@@ -140,13 +213,24 @@ function pruefen(button) {
         }
     }
 
-    if (button.innerText === richtigeAntwort) {
+    var meldung = document.getElementById("meldung");
+    meldung.style.display = "block";
+
+    if (gewaehlteAntwort === richtigeAntwort) {
         punkte++;
         document.getElementById("punkte").innerText = punkte;
-        document.getElementById("meldung").innerText = "Richtig! " + erklaerung;
+        meldung.innerHTML =
+            "<b>Richtig!</b><br>" +
+            erklaerung;
     } else {
         button.className = "falsch";
-        document.getElementById("meldung").innerText = "Nicht richtig. " + erklaerung;
+        meldung.innerHTML =
+            "<b>Nicht richtig.</b><br><br>" +
+            "<b>Warum?</b><br>" +
+            erklaerung + "<br><br>" +
+            "<b>Deine Antwort war:</b> " + gewaehlteAntwort + "<br>" +
+            findeInfo(gewaehlteAntwort) + "<br><br>" +
+            "<b>Merke:</b> Bei dieser Aufgabe ist richtig: <b>" + richtigeAntwort + "</b>.";
     }
 
     document.getElementById("weiterButton").style.display = "block";
@@ -170,4 +254,3 @@ zeigeFrage();
 
 </body>
 </html>
-
