@@ -112,6 +112,76 @@ var info = {
     "Meiner Meinung nach": "„Meiner Meinung nach“ passt gut, wenn man in einem Forumsbeitrag die eigene Meinung äußert."
 };
 
+var extraInfo2 = {
+    "ein Angebot reparieren": "„ein Angebot reparieren“ passt nicht. Reparieren passt zu Dingen oder Problemen: eine Maschine reparieren, einen Schaden reparieren. Bei einem Angebot sagt man besser: ein Angebot einholen, unterbreiten, annehmen oder ablehnen.",
+    "ein Angebot bezahlen": "„ein Angebot bezahlen“ passt nicht gut. Man bezahlt eine Rechnung, einen Betrag oder eine Ware. Ein Angebot kann man einholen, unterbreiten, annehmen oder ablehnen.",
+    "ein Angebot anfordern": "„ein Angebot anfordern“ bedeutet: aktiv ein Angebot von einer Firma verlangen. Ähnlich: ein Angebot einholen.",
+
+    "eine Rechnung": "„eine Rechnung“ ist ein Dokument mit einem Betrag, den man bezahlen muss. Typisch: eine Rechnung erhalten, prüfen, schreiben oder begleichen.",
+    "eine Pause": "„eine Pause“ bedeutet: kurze Unterbrechung. Typisch: eine Pause machen, eine Pause einlegen.",
+    "eine schwierige Aufgabe": "„eine schwierige Aufgabe“ passt zu „die Herausforderung“. Eine Herausforderung ist etwas, das nicht leicht ist und gelöst werden muss.",
+
+    "schnell und egal": "„schnell und egal“ ist kein gutes Synonym für „sorgfältig“. Das Gegenteil ist eher: ungenau, nachlässig, oberflächlich.",
+    "laut und stark": "„laut und stark“ beschreibt eher Lautstärke oder Kraft, aber nicht sorgfältiges Arbeiten.",
+    "genau und aufmerksam": "„genau und aufmerksam“ passt zu „sorgfältig“. Beispiel: sorgfältig arbeiten, sorgfältig prüfen.",
+
+    "Schicken Sie sofort alles!": "Dieser Satz ist zu direkt und unhöflich. In einer formellen Beschwerde besser: „Ich bitte Sie, die fehlenden Artikel schnellstmöglich nachzuliefern.“",
+    "Machen Sie endlich Ihre Arbeit.": "Dieser Satz klingt aggressiv und unprofessionell. In einer Beschwerde muss man klar, aber höflich formulieren.",
+    "Ich bitte Sie, die fehlenden Artikel schnellstmöglich nachzuliefern.": "Das ist eine höfliche und klare Forderung in einer Beschwerde.",
+
+    "Hallo, das war alles schlecht.": "Dieser Satz ist zu umgangssprachlich und ungenau. Für eine formelle Beschwerde braucht man eine klare, höfliche Einleitung.",
+    "Ich schreibe einfach mal.": "Das ist zu informell und passt nicht zu einer formellen Beschwerde.",
+    "Hiermit möchte ich mich über die fehlerhafte Lieferung beschweren.": "Das passt gut als formelle Einleitung einer Beschwerde.",
+
+    "Alles fehlt, das ist schlecht.": "Dieser Satz ist zu ungenau und zu umgangssprachlich. Besser: „Leider mussten wir feststellen, dass mehrere Artikel fehlen.“",
+    "Warum haben Sie das gemacht?": "Das klingt vorwurfsvoll. In einer Beschwerde beschreibt man das Problem sachlich und höflich.",
+    "Leider mussten wir feststellen, dass mehrere Artikel fehlen.": "Das ist eine sachliche und formelle Problembeschreibung.",
+
+    "Das ist nicht unser Problem.": "Dieser Satz ist unhöflich und passt nicht als Antwort auf eine Beschwerde. Besser: „Vielen Dank für Ihre Nachricht“ oder „Wir bedauern die Unannehmlichkeiten.“",
+    "Warum schreiben Sie uns?": "Dieser Satz klingt unprofessionell. Eine Antwort auf eine Beschwerde beginnt höflich, zum Beispiel mit Dank für die Nachricht.",
+    "Vielen Dank für Ihre Nachricht.": "Das ist eine höfliche Einleitung für eine Antwort auf eine Beschwerde.",
+
+    "Pech gehabt.": "Das ist sehr unhöflich. In einer formellen Antwort sagt man besser: „Wir bedauern die entstandenen Unannehmlichkeiten.“",
+    "Das passiert eben.": "Das klingt gleichgültig und unprofessionell. Besser ist eine höfliche Entschuldigung.",
+    "Wir bedauern die entstandenen Unannehmlichkeiten.": "Das ist eine formelle und höfliche Entschuldigung.",
+
+    "Sie müssen neu bestellen.": "Das klingt nicht kundenfreundlich. Bei fehlender Ware sollte die Firma normalerweise eine Lösung anbieten, zum Beispiel Nachlieferung.",
+    "Wir machen nichts.": "Das ist unprofessionell und keine passende Lösung.",
+    "Wir werden die fehlenden Artikel umgehend nachliefern.": "Das ist eine passende Lösung bei fehlender Ware.",
+
+    "Bitte schreiben Sie nicht mehr.": "Das ist unhöflich und passt nicht in eine formelle Antwort.",
+    "Ende.": "Das ist kein passender Schluss für eine formelle E-Mail.",
+    "Für Rückfragen stehen wir Ihnen gerne zur Verfügung.": "Das ist ein typischer höflicher Schlusssatz in einer formellen E-Mail.",
+
+    "Mit freundlichen Grüßen": "„Mit freundlichen Grüßen“ passt als Schluss einer formellen E-Mail oder eines Briefes. Es passt nicht als Beginn einer Meinung im Forumsbeitrag.",
+    "Hiermit beschwere ich mich": "„Hiermit beschwere ich mich“ passt zu einer formellen Beschwerde, aber nicht zu einem Forumsbeitrag.",
+    "Meiner Meinung nach": "„Meiner Meinung nach“ passt gut, wenn man die eigene Meinung äußert.",
+
+    "Sehr geehrte Damen und Herren,": "Das passt als Anrede in einer formellen E-Mail, aber nicht typisch in einem Forumsbeitrag.",
+    "Hiermit kündige ich den Vertrag.": "Das passt zu einer Kündigung, aber nicht zu einem Forumsbeitrag.",
+    "Ich habe ähnliche Erfahrungen gemacht.": "Das passt gut in einen Forumsbeitrag, weil man dort persönliche Erfahrungen nennen kann.",
+
+    "Ich fordere Sie auf, ...": "Das passt eher zu einer formellen Forderung oder Beschwerde, nicht zu einem Forumsbeitrag über Vor- und Nachteile.",
+    "Anbei sende ich Ihnen ...": "Das passt zu einer formellen E-Mail mit Anlage, aber nicht zur Erklärung eines Vorteils.",
+    "Ein großer Vorteil ist, dass ...": "Das passt gut, wenn man in einem Forumsbeitrag Vorteile nennt.",
+
+    "Ich bitte um Nachlieferung.": "Das passt zu einer Beschwerde über fehlende Ware, aber nicht zur Beschreibung eines Nachteils in einem Forumsbeitrag.",
+    "Sehr geehrter Herr Müller,": "Das ist eine formelle Anrede, kein Satz für einen Nachteil.",
+    "Ein Nachteil liegt darin, dass ...": "Das passt gut, wenn man in einem Forumsbeitrag einen Nachteil nennt.",
+
+    "bestätigen": "„bestätigen“ passt zu: einen Termin bestätigen, eine Bestellung bestätigen, den Eingang bestätigen.",
+    "verschieben": "„verschieben“ passt zu: einen Termin verschieben, eine Besprechung verschieben.",
+    "warten": "„warten“ passt zu technischen Dingen: eine Maschine warten, eine Anlage warten.",
+    "reparieren": "„reparieren“ passt zu kaputten Dingen: eine Maschine reparieren, ein Gerät reparieren.",
+    "freiwillig": "„freiwillig“ bedeutet: man muss es nicht machen, aber man entscheidet sich dafür.",
+    "bezahlt": "„bezahlt“ bedeutet: etwas wurde beglichen, zum Beispiel eine Rechnung ist bezahlt.",
+    "beglichen": "„beglichen“ kommt von „begleichen“. Eine Rechnung ist beglichen = sie ist bezahlt."
+};
+
+for (var key in extraInfo2) {
+    info[key] = extraInfo2[key];
+}
+
 var daten = {
     "Wortschatz": [
         {
@@ -414,3 +484,4 @@ zeigeMenu();
 
 </body>
 </html>
+
