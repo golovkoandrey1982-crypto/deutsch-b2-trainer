@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>B2-Verben-Trainer</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+.box {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+h1 {
+    text-align: center;
+}
+.frage {
+    font-size: 26px;
+    margin: 25px 0;
+    text-align: center;
+    font-weight: bold;
+}
+button {
+    width: 100%;
+    padding: 16px;
+    margin: 8px 0;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background: #e8e8e8;
+    cursor: pointer;
+}
+.richtig {
+    background: #c8f7c5 !important;
+}
+.falsch {
+    background: #ffc9c9 !important;
+}
+.info {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}
+.klein {
+    text-align: center;
+    color: #555;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h1>B2-Verben-Trainer</h1>
+<p class="klein">Wähle das passende Verb.</p>
+
+<div class="info">
+Punkte: <span id="punkte">0</span> |
+Frage: <span id="nummer">1</span>/<span id="gesamt">12</span>
+</div>
+
+<div class="frage" id="frage"></div>
+<div id="antworten"></div>
+<div class="info" id="meldung"></div>
+
+<button onclick="weiter()" id="weiterButton" style="display:none;">Weiter</button>
+</div>
+
+<script>
+var fragen = [
+    ["eine Rechnung ...", "begleichen", ["begleichen", "abhalten", "feststellen"], "Eine Rechnung begleichen bedeutet: eine Rechnung bezahlen."],
+    ["ein Angebot offiziell machen = ein Angebot ...", "unterbreiten", ["unterbreiten", "beheben", "einhalten"], "Ein Angebot unterbreiten bedeutet: offiziell ein Angebot machen."],
+    ["ein Angebot nicht akzeptieren = ein Angebot ...", "ablehnen", ["ablehnen", "erteilen", "einholen"], "Ablehnen bedeutet: Nein sagen, nicht akzeptieren."],
+    ["einen Fehler oder Mangel erkennen = einen Fehler ...", "feststellen", ["feststellen", "abhalten", "erteilen"], "Feststellen bedeutet: erkennen, dass etwas so ist."],
+    ["einen Auftrag offiziell geben = einen Auftrag ...", "erteilen", ["erteilen", "feststellen", "begleichen"], "Einen Auftrag erteilen bedeutet: offiziell sagen, dass jemand die Arbeit machen soll."],
+    ["ein Angebot akzeptieren = ein Angebot ...", "annehmen", ["annehmen", "ablehnen", "beheben"], "Annehmen bedeutet: Ja sagen, akzeptieren."],
+    ["eine Frist ...", "einhalten", ["einhalten", "unterbreiten", "ablehnen"], "Eine Frist einhalten bedeutet: rechtzeitig fertig sein."],
+    ["eine Besprechung ...", "abhalten", ["abhalten", "aufgeben", "begleichen"], "Eine Besprechung abhalten bedeutet: eine Besprechung durchführen."],
+    ["ein Angebot von einer Firma anfordern = ein Angebot ...", "einholen", ["einholen", "abhalten", "beheben"], "Ein Angebot einholen bedeutet: aktiv ein Angebot anfordern."],
+    ["eine Lieferung ...", "entgegennehmen", ["entgegennehmen", "einholen", "erteilen"], "Eine Lieferung entgegennehmen bedeutet: die Lieferung annehmen, wenn sie kommt."],
+    ["eine Bestellung ...", "aufgeben", ["aufgeben", "feststellen", "einhalten"], "Eine Bestellung aufgeben bedeutet: etwas offiziell bestellen."],
+    ["einen Mangel reparieren/lösen = einen Mangel ...", "beheben", ["beheben", "begleichen", "abhalten"], "Einen Mangel beheben bedeutet: ein Problem reparieren oder lösen."]
+];
+
+var index = 0;
+var punkte = 0;
+var beantwortet = false;
+
+function mischen(liste) {
+    for (var i = liste.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = liste[i];
+        liste[i] = liste[j];
+        liste[j] = temp;
+    }
+    return liste;
+}
+
+function zeigeFrage() {
+    beantwortet = false;
+    document.getElementById("nummer").innerText = index + 1;
+    document.getElementById("gesamt").innerText = fragen.length;
+    document.getElementById("frage").innerText = fragen[index][0];
+    document.getElementById("meldung").innerText = "";
+    document.getElementById("weiterButton").style.display = "none";
+
+    var antworten = fragen[index][2].slice();
+    antworten = mischen(antworten);
+
+    var div = document.getElementById("antworten");
+    div.innerHTML = "";
+
+    for (var i = 0; i < antworten.length; i++) {
+        var b = document.createElement("button");
+        b.innerText = antworten[i];
+        b.onclick = function() {
+            pruefen(this);
+        };
+        div.appendChild(b);
+    }
+}
+
+function pruefen(button) {
+    if (beantwortet) return;
+    beantwortet = true;
+
+    var richtigeAntwort = fragen[index][1];
+    var erklaerung = fragen[index][3];
+    var alleButtons = document.querySelectorAll("#antworten button");
+
+    for (var i = 0; i < alleButtons.length; i++) {
+        if (alleButtons[i].innerText === richtigeAntwort) {
+            alleButtons[i].className = "richtig";
+        }
+    }
+
+    if (button.innerText === richtigeAntwort) {
+        punkte++;
+        document.getElementById("punkte").innerText = punkte;
+        document.getElementById("meldung").innerText = "Richtig! " + erklaerung;
+    } else {
+        button.className = "falsch";
+        document.getElementById("meldung").innerText = "Nicht richtig. " + erklaerung;
+    }
+
+    document.getElementById("weiterButton").style.display = "block";
+}
+
+function weiter() {
+    index++;
+
+    if (index >= fragen.length) {
+        document.querySelector(".box").innerHTML =
+            "<h1>Fertig!</h1>" +
+            "<div class='frage'>Du hast " + punkte + " von " + fragen.length + " Punkten erreicht.</div>" +
+            "<button onclick='location.reload()'>Noch einmal spielen</button>";
+    } else {
+        zeigeFrage();
+    }
+}
+
+zeigeFrage();
+</script>
+
+</body>
+</html>
+
