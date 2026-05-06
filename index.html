@@ -182,6 +182,44 @@ for (var key in extraInfo2) {
     info[key] = extraInfo2[key];
 }
 
+var extraInfo3 = {
+    "ausgeben": "„ausgeben“ passt zu Geld: Geld ausgeben. Zu „Kosten“ passt besser: Kosten kalkulieren, angeben oder erstatten.",
+    "kalkulieren": "„kalkulieren“ bedeutet: berechnen oder planen. Typisch: Kosten kalkulieren.",
+    "erstatten": "„erstatten“ bedeutet: Geld zurückzahlen. Typisch: Kosten erstatten.",
+    "angeben": "„angeben“ bedeutet hier: nennen oder mitteilen. Typisch: Kosten angeben.",
+
+    "bewerben": "„sich bewerben“ passt zu: sich auf eine Stelle bewerben. Es passt nicht direkt zu „ein Vorstellungsgespräch“.",
+    "führen": "„führen“ passt zu Gesprächen: ein Gespräch führen, ein Vorstellungsgespräch führen.",
+    "wahrnehmen": "„wahrnehmen“ passt zu Terminen: einen Termin wahrnehmen, ein Vorstellungsgespräch wahrnehmen.",
+    "vorbereiten": "„vorbereiten“ bedeutet: vorher planen und sich darauf einstellen. Typisch: ein Vorstellungsgespräch vorbereiten.",
+
+    "Fachwissen können": "Das klingt nicht richtig. Man kann Fachwissen haben, erwerben oder erweitern.",
+    "erweitern": "„erweitern“ bedeutet: größer machen oder verbessern. Typisch: Fachwissen erweitern.",
+    "Fachwissen erwerben": "„Fachwissen erwerben“ bedeutet: Fachwissen lernen oder bekommen.",
+    "Erfahrungen sammeln": "„Erfahrungen sammeln“ bedeutet: durch Arbeit oder Praxis Erfahrung bekommen.",
+
+    "Qualitätsstandards beachten": "„Qualitätsstandards beachten“ bedeutet: Regeln und Standards einhalten.",
+    "eine Stelle bewerben": "Richtig ist: sich auf eine Stelle bewerben.",
+    "eine Stelle verfügen": "Das passt nicht. „verfügen über“ passt zu Kenntnissen oder Erfahrungen: über Kenntnisse verfügen.",
+    "Kenntnisse vertiefen": "„Kenntnisse vertiefen“ bedeutet: Kenntnisse verbessern und genauer lernen.",
+
+    "fehlerhafte Ware zurückschicken": "Das bedeutet: falsche oder kaputte Ware an den Verkäufer zurücksenden.",
+    "den Retourenschein ausdrucken": "„ausdrucken“ passt zu Dokumenten: den Retourenschein ausdrucken.",
+    "sich in Verbindung setzen": "„sich mit dem Kundendienst in Verbindung setzen“ bedeutet: den Kundendienst kontaktieren.",
+
+    "eine Kündigung äußern": "Das passt nicht gut. Man kann Kritik oder Zweifel äußern. Eine Kündigung kann man aussprechen oder einreichen.",
+    "eine Kündigung einreichen": "„eine Kündigung einreichen“ bedeutet: die Kündigung offiziell abgeben.",
+    "eine Kündigung aussprechen": "„eine Kündigung aussprechen“ bedeutet: offiziell kündigen.",
+
+    "einen Vertrag aufbauen": "Das passt nicht. Einen Vertrag kann man abschließen, unterschreiben oder brechen.",
+    "einen Vertrag unterschreiben": "„einen Vertrag unterschreiben“ bedeutet: den Vertrag mit Unterschrift bestätigen.",
+    "einen Vertrag abschließen": "„einen Vertrag abschließen“ bedeutet: einen Vertrag offiziell vereinbaren."
+};
+
+for (var key in extraInfo3) {
+    info[key] = extraInfo3[key];
+}
+
 var daten = {
     "Wortschatz": [
         {
@@ -264,6 +302,84 @@ var daten = {
             richtig: "aufgeben",
             antworten: ["aufgeben", "feststellen", "abhalten"],
             erklaerung: "Bei „eine Bestellung“ passt: aufgeben. Das bedeutet: offiziell bestellen."
+        }        ,
+        {
+            frage: "Was passt nicht? Kosten kann man ...",
+            richtig: "ausgeben",
+            antworten: ["kalkulieren", "angeben", "ausgeben"],
+            erklaerung: "„ausgeben“ passt nicht direkt zu „Kosten“. Man gibt Geld aus. Kosten kann man kalkulieren, angeben oder erstatten."
+        },
+        {
+            frage: "Was passt? Kosten, die der Kunde zu viel bezahlt hat, kann man ...",
+            richtig: "erstatten",
+            antworten: ["erstatten", "abhalten", "nähen"],
+            erklaerung: "Kosten erstatten bedeutet: Geld zurückzahlen."
+        },
+        {
+            frage: "Was passt nicht? Ein Vorstellungsgespräch kann man ...",
+            richtig: "bewerben",
+            antworten: ["führen", "vorbereiten", "bewerben"],
+            erklaerung: "„bewerben“ passt nicht direkt zu „Vorstellungsgespräch“. Man bewirbt sich auf eine Stelle. Ein Vorstellungsgespräch kann man führen, vorbereiten oder wahrnehmen."
+        },
+        {
+            frage: "Was passt? Einen Termin kann man ...",
+            richtig: "wahrnehmen",
+            antworten: ["wahrnehmen", "nähen", "begleichen"],
+            erklaerung: "Einen Termin wahrnehmen bedeutet: zu dem Termin gehen oder teilnehmen."
+        },
+        {
+            frage: "Was passt nicht? Fachwissen kann man ...",
+            richtig: "können",
+            antworten: ["erwerben", "erweitern", "können"],
+            erklaerung: "„Fachwissen können“ klingt nicht richtig. Man kann Fachwissen haben, erwerben oder erweitern."
+        },
+        {
+            frage: "Was passt? Erfahrungen kann man ...",
+            richtig: "sammeln",
+            antworten: ["sammeln", "abhalten", "begleichen"],
+            erklaerung: "Erfahrungen sammeln bedeutet: durch Praxis Erfahrung bekommen."
+        },
+        {
+            frage: "Was passt? Sich auf eine Stelle ...",
+            richtig: "bewerben",
+            antworten: ["bewerben", "begleichen", "abhalten"],
+            erklaerung: "Richtig ist: sich auf eine Stelle bewerben."
+        },
+        {
+            frage: "Was passt? Qualitätsstandards muss man ...",
+            richtig: "beachten",
+            antworten: ["beachten", "zurückschicken", "ausdrucken"],
+            erklaerung: "Qualitätsstandards beachten bedeutet: Standards und Regeln einhalten."
+        },
+        {
+            frage: "Was passt? Fehlerhafte Ware kann man ...",
+            richtig: "zurückschicken",
+            antworten: ["zurückschicken", "abhalten", "erteilen"],
+            erklaerung: "Fehlerhafte Ware zurückschicken bedeutet: falsche oder kaputte Ware zurücksenden."
+        },
+        {
+            frage: "Was passt? Einen Retourenschein kann man ...",
+            richtig: "ausdrucken",
+            antworten: ["ausdrucken", "beheben", "abhalten"],
+            erklaerung: "Einen Retourenschein ausdrucken bedeutet: das Dokument drucken."
+        },
+        {
+            frage: "Was passt? Sich mit dem Kundendienst in Verbindung ...",
+            richtig: "setzen",
+            antworten: ["setzen", "begleichen", "nähen"],
+            erklaerung: "Sich mit dem Kundendienst in Verbindung setzen bedeutet: den Kundendienst kontaktieren."
+        },
+        {
+            frage: "Was passt nicht? Eine Kündigung kann man ...",
+            richtig: "äußern",
+            antworten: ["einreichen", "aussprechen", "äußern"],
+            erklaerung: "„äußern“ passt besser zu Kritik, Meinung oder Zweifel. Eine Kündigung kann man einreichen oder aussprechen."
+        },
+        {
+            frage: "Was passt nicht? Einen Vertrag kann man ...",
+            richtig: "aufbauen",
+            antworten: ["unterschreiben", "abschließen", "aufbauen"],
+            erklaerung: "„aufbauen“ passt nicht zu Vertrag. Einen Vertrag kann man unterschreiben, abschließen oder brechen."
         }
     ],
 
@@ -484,4 +600,5 @@ zeigeMenu();
 
 </body>
 </html>
+
 
