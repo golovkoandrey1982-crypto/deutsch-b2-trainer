@@ -110,6 +110,46 @@ var wortInfo = {
     "die Unterbrechung": "„die Unterbrechung“ bedeutet: eine Pause oder eine Zeit, in der etwas nicht weiterläuft."
 };
 
+var extraInfo = {
+    "die Besprechung": "„die Besprechung“ bedeutet: ein berufliches Gespräch oder Meeting. Typisch: eine Besprechung abhalten, an einer Besprechung teilnehmen.",
+    "die Rechnung": "„die Rechnung“ ist ein Dokument, in dem steht, wie viel man bezahlen muss. Typisch: eine Rechnung begleichen, eine Rechnung prüfen, eine Rechnung erhalten.",
+    "eine Rechnung": "„eine Rechnung“ ist ein Dokument mit einem Betrag, den man bezahlen muss. Typisch: eine Rechnung begleichen.",
+    "eine Pause": "„eine Pause“ bedeutet: kurze Unterbrechung, in der man nicht arbeitet oder lernt.",
+    "eine schwierige Aufgabe": "„eine schwierige Aufgabe“ ist eine Aufgabe, die nicht leicht ist. Das passt gut zu: die Herausforderung.",
+    "freiwillig": "„freiwillig“ bedeutet: man muss es nicht machen, aber man macht es aus eigener Entscheidung.",
+    "notwendig": "„notwendig“ bedeutet: man braucht es; es ist erforderlich.",
+    "alt und nicht mehr aktuell": "Das bedeutet: veraltet. Zum Beispiel: veraltete Kenntnisse oder veraltete Technik.",
+    "stark bleiben trotz Konkurrenz": "Das bedeutet: sich behaupten. Eine Firma bleibt erfolgreich, obwohl es viele Konkurrenten gibt.",
+    "einen Termin absagen": "„einen Termin absagen“ bedeutet: sagen, dass ein Termin nicht stattfindet.",
+    "eine neue berufliche Richtung": "Das passt zu: die Neuorientierung. Man sucht beruflich einen neuen Weg.",
+    "die Neuorientierung": "„die Neuorientierung“ bedeutet: man sucht eine neue Richtung, zum Beispiel beruflich nach Migration, Krankheit oder Arbeitslosigkeit.",
+    "die Herausforderung": "„die Herausforderung“ bedeutet: eine schwierige Aufgabe oder ein Problem, das man lösen muss.",
+    "modernisiert": "„modernisiert“ kommt von „modernisieren“. Das bedeutet: etwas neuer, besser oder aktueller machen.",
+    "lehnt ab": "„lehnt ab“ kommt von „ablehnen“. Das bedeutet: Nein sagen, nicht akzeptieren.",
+    "begleicht": "„begleicht“ kommt von „begleichen“. Das bedeutet: bezahlen, zum Beispiel eine Rechnung begleichen.",
+    "beglichen": "„beglichen“ kommt von „begleichen“. Eine Rechnung ist beglichen = sie ist bezahlt.",
+    "erforderlich": "„erforderlich“ bedeutet: notwendig.",
+    "veraltet": "„veraltet“ bedeutet: alt und nicht mehr aktuell.",
+    "abhalten": "„abhalten“ passt zu: eine Besprechung abhalten, eine Sitzung abhalten, ein Meeting abhalten.",
+    "begleichen": "„begleichen“ passt zu: eine Rechnung begleichen, eine Schuld begleichen, einen offenen Betrag begleichen.",
+    "beheben": "„beheben“ passt zu: einen Fehler beheben, einen Mangel beheben, ein Problem beheben.",
+    "erteilen": "„erteilen“ passt zu: einen Auftrag erteilen, eine Erlaubnis erteilen, eine Genehmigung erteilen.",
+    "feststellen": "„feststellen“ passt zu: einen Fehler feststellen, einen Mangel feststellen, eine Abweichung feststellen.",
+    "einhalten": "„einhalten“ passt zu: eine Frist einhalten, einen Termin einhalten, Regeln einhalten.",
+    "unterbreiten": "„unterbreiten“ passt zu: ein Angebot unterbreiten, einen Vorschlag unterbreiten.",
+    "ablehnen": "„ablehnen“ bedeutet: Nein sagen, nicht akzeptieren. Typisch: ein Angebot ablehnen.",
+    "einholen": "„einholen“ bedeutet: aktiv anfordern. Typisch: ein Angebot einholen, Informationen einholen.",
+    "entgegennehmen": "„entgegennehmen“ bedeutet: etwas bekommen und annehmen. Typisch: eine Lieferung entgegennehmen.",
+    "aufgeben": "„aufgeben“ passt zu: eine Bestellung aufgeben, eine Anzeige aufgeben, ein Paket aufgeben.",
+    "annehmen": "„annehmen“ bedeutet: Ja sagen, akzeptieren. Typisch: ein Angebot annehmen.",
+    "einstellen": "„einstellen“ passt hier als Teil von: sich auf etwas einstellen. Das bedeutet: sich auf eine neue Situation vorbereiten.",
+    "erwerben": "„erwerben“ bedeutet: bekommen oder lernen. Typisch: Kenntnisse erwerben, Fähigkeiten erwerben.",
+    "vertrauen": "„vertrauen“ passt oft mit „auf“: auf etwas vertrauen. Das bedeutet: glauben, dass etwas funktioniert oder hilft."
+};
+
+for (var key in extraInfo) {
+    wortInfo[key] = extraInfo[key];
+}
 var fragen = [
     ["eine Rechnung ...", "begleichen", ["begleichen", "abhalten", "feststellen"], "Bei „eine Rechnung“ passt: begleichen. Das bedeutet: eine Rechnung bezahlen."],
     ["ein Angebot offiziell machen = ein Angebot ...", "unterbreiten", ["unterbreiten", "beheben", "einhalten"], "Bei „ein Angebot offiziell machen“ passt: unterbreiten."],
@@ -254,3 +294,4 @@ zeigeFrage();
 
 </body>
 </html>
+
