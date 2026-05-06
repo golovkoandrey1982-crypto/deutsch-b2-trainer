@@ -11,7 +11,7 @@ body {
     padding: 20px;
 }
 .box {
-    max-width: 760px;
+    max-width: 780px;
     margin: auto;
     background: white;
     padding: 25px;
@@ -20,6 +20,10 @@ body {
 }
 h1 {
     text-align: center;
+}
+.klein {
+    text-align: center;
+    color: #555;
 }
 .frage {
     font-size: 25px;
@@ -40,6 +44,10 @@ button {
 button:hover {
     background: #d5d5d5;
 }
+.menuButton {
+    background: #eef2ff;
+    text-align: left;
+}
 .richtig {
     background: #c8f7c5 !important;
 }
@@ -51,10 +59,6 @@ button:hover {
     font-size: 18px;
     text-align: center;
 }
-.klein {
-    text-align: center;
-    color: #555;
-}
 .meldung {
     margin-top: 20px;
     font-size: 18px;
@@ -63,153 +67,280 @@ button:hover {
     padding: 15px;
     border-radius: 12px;
 }
+.zurueck {
+    background: #ddd;
+    font-size: 17px;
+}
 </style>
 </head>
 <body>
 
-<div class="box">
-<h1>Deutsch-B2-Trainer</h1>
-<p class="klein">Verben und wichtige Wörter aus dem Berufskontext.</p>
-
-<div class="info">
-Punkte: <span id="punkte">0</span> |
-Frage: <span id="nummer">1</span>/<span id="gesamt"></span>
-</div>
-
-<div class="frage" id="frage"></div>
-<div id="antworten"></div>
-<div class="meldung" id="meldung" style="display:none;"></div>
-
-<button onclick="weiter()" id="weiterButton" style="display:none;">Weiter</button>
-</div>
+<div class="box" id="box"></div>
 
 <script>
-var wortInfo = {
-    "unterbreiten": "„unterbreiten“ passt besonders zu: ein Angebot unterbreiten, einen Vorschlag unterbreiten.",
-    "ablehnen": "„ablehnen“ passt besonders zu: ein Angebot ablehnen, einen Antrag ablehnen, eine Bitte ablehnen.",
-    "feststellen": "„feststellen“ passt besonders zu: einen Fehler feststellen, einen Mangel feststellen, eine Abweichung feststellen.",
-    "erteilen": "„erteilen“ passt besonders zu: einen Auftrag erteilen, eine Erlaubnis erteilen, eine Genehmigung erteilen.",
-    "annehmen": "„annehmen“ passt besonders zu: ein Angebot annehmen, eine Einladung annehmen, einen Vorschlag annehmen.",
-    "einhalten": "„einhalten“ passt besonders zu: eine Frist einhalten, einen Termin einhalten, Regeln einhalten.",
-    "abhalten": "„abhalten“ passt besonders zu: eine Besprechung abhalten, eine Sitzung abhalten, ein Meeting abhalten.",
-    "einholen": "„einholen“ passt besonders zu: ein Angebot einholen, Informationen einholen, eine Auskunft einholen.",
-    "entgegennehmen": "„entgegennehmen“ passt besonders zu: eine Lieferung entgegennehmen, eine Beschwerde entgegennehmen, einen Anruf entgegennehmen.",
-    "aufgeben": "„aufgeben“ passt besonders zu: eine Bestellung aufgeben, eine Anzeige aufgeben, ein Paket aufgeben.",
-    "beheben": "„beheben“ passt besonders zu: einen Fehler beheben, einen Mangel beheben, ein Problem beheben.",
-    "begleichen": "„begleichen“ passt besonders zu: eine Rechnung begleichen, eine Schuld begleichen, einen offenen Betrag begleichen.",
-
-    "die Herausforderung": "„die Herausforderung“ bedeutet: eine schwierige Aufgabe, die man lösen muss.",
-    "sich einstellen auf": "„sich einstellen auf“ bedeutet: sich innerlich oder praktisch auf eine neue Situation vorbereiten.",
-    "sich behaupten": "„sich behaupten“ bedeutet: stark bleiben, obwohl es Konkurrenz oder Probleme gibt.",
-    "erforderlich": "„erforderlich“ bedeutet: notwendig.",
-    "erwerben": "„erwerben“ bedeutet: bekommen oder lernen, zum Beispiel Kenntnisse erwerben.",
-    "veralten": "„veralten“ bedeutet: alt und nicht mehr aktuell werden.",
-    "vertrauen auf": "„vertrauen auf“ bedeutet: glauben, dass etwas oder jemand hilft oder funktioniert.",
-    "die Neuorientierung": "„die Neuorientierung“ bedeutet: eine neue Richtung suchen, zum Beispiel beruflich.",
-    "modernisieren": "„modernisieren“ bedeutet: neuer und besser machen.",
-    "die Unterbrechung": "„die Unterbrechung“ bedeutet: eine Pause oder eine Zeit, in der etwas nicht weiterläuft."
-};
-
-var extraInfo = {
-    "die Besprechung": "„die Besprechung“ bedeutet: ein berufliches Gespräch oder Meeting. Typisch: eine Besprechung abhalten, an einer Besprechung teilnehmen.",
-    "die Rechnung": "„die Rechnung“ ist ein Dokument, in dem steht, wie viel man bezahlen muss. Typisch: eine Rechnung begleichen, eine Rechnung prüfen, eine Rechnung erhalten.",
-    "eine Rechnung": "„eine Rechnung“ ist ein Dokument mit einem Betrag, den man bezahlen muss. Typisch: eine Rechnung begleichen.",
-    "eine Pause": "„eine Pause“ bedeutet: kurze Unterbrechung, in der man nicht arbeitet oder lernt.",
-    "eine schwierige Aufgabe": "„eine schwierige Aufgabe“ ist eine Aufgabe, die nicht leicht ist. Das passt gut zu: die Herausforderung.",
-    "freiwillig": "„freiwillig“ bedeutet: man muss es nicht machen, aber man macht es aus eigener Entscheidung.",
-    "notwendig": "„notwendig“ bedeutet: man braucht es; es ist erforderlich.",
-    "alt und nicht mehr aktuell": "Das bedeutet: veraltet. Zum Beispiel: veraltete Kenntnisse oder veraltete Technik.",
-    "stark bleiben trotz Konkurrenz": "Das bedeutet: sich behaupten. Eine Firma bleibt erfolgreich, obwohl es viele Konkurrenten gibt.",
-    "einen Termin absagen": "„einen Termin absagen“ bedeutet: sagen, dass ein Termin nicht stattfindet.",
-    "eine neue berufliche Richtung": "Das passt zu: die Neuorientierung. Man sucht beruflich einen neuen Weg.",
-    "die Neuorientierung": "„die Neuorientierung“ bedeutet: man sucht eine neue Richtung, zum Beispiel beruflich nach Migration, Krankheit oder Arbeitslosigkeit.",
-    "die Herausforderung": "„die Herausforderung“ bedeutet: eine schwierige Aufgabe oder ein Problem, das man lösen muss.",
-    "modernisiert": "„modernisiert“ kommt von „modernisieren“. Das bedeutet: etwas neuer, besser oder aktueller machen.",
-    "lehnt ab": "„lehnt ab“ kommt von „ablehnen“. Das bedeutet: Nein sagen, nicht akzeptieren.",
-    "begleicht": "„begleicht“ kommt von „begleichen“. Das bedeutet: bezahlen, zum Beispiel eine Rechnung begleichen.",
-    "beglichen": "„beglichen“ kommt von „begleichen“. Eine Rechnung ist beglichen = sie ist bezahlt.",
-    "erforderlich": "„erforderlich“ bedeutet: notwendig.",
-    "veraltet": "„veraltet“ bedeutet: alt und nicht mehr aktuell.",
-    "abhalten": "„abhalten“ passt zu: eine Besprechung abhalten, eine Sitzung abhalten, ein Meeting abhalten.",
-    "begleichen": "„begleichen“ passt zu: eine Rechnung begleichen, eine Schuld begleichen, einen offenen Betrag begleichen.",
-    "beheben": "„beheben“ passt zu: einen Fehler beheben, einen Mangel beheben, ein Problem beheben.",
-    "erteilen": "„erteilen“ passt zu: einen Auftrag erteilen, eine Erlaubnis erteilen, eine Genehmigung erteilen.",
-    "feststellen": "„feststellen“ passt zu: einen Fehler feststellen, einen Mangel feststellen, eine Abweichung feststellen.",
-    "einhalten": "„einhalten“ passt zu: eine Frist einhalten, einen Termin einhalten, Regeln einhalten.",
-    "unterbreiten": "„unterbreiten“ passt zu: ein Angebot unterbreiten, einen Vorschlag unterbreiten.",
-    "ablehnen": "„ablehnen“ bedeutet: Nein sagen, nicht akzeptieren. Typisch: ein Angebot ablehnen.",
-    "einholen": "„einholen“ bedeutet: aktiv anfordern. Typisch: ein Angebot einholen, Informationen einholen.",
-    "entgegennehmen": "„entgegennehmen“ bedeutet: etwas bekommen und annehmen. Typisch: eine Lieferung entgegennehmen.",
-    "aufgeben": "„aufgeben“ passt zu: eine Bestellung aufgeben, eine Anzeige aufgeben, ein Paket aufgeben.",
-    "annehmen": "„annehmen“ bedeutet: Ja sagen, akzeptieren. Typisch: ein Angebot annehmen.",
-    "einstellen": "„einstellen“ passt hier als Teil von: sich auf etwas einstellen. Das bedeutet: sich auf eine neue Situation vorbereiten.",
-    "erwerben": "„erwerben“ bedeutet: bekommen oder lernen. Typisch: Kenntnisse erwerben, Fähigkeiten erwerben.",
-    "vertrauen": "„vertrauen“ passt oft mit „auf“: auf etwas vertrauen. Das bedeutet: glauben, dass etwas funktioniert oder hilft."
-};
-
-for (var key in extraInfo) {
-    wortInfo[key] = extraInfo[key];
-}
-var fragen = [
-    ["eine Rechnung ...", "begleichen", ["begleichen", "abhalten", "feststellen"], "Bei „eine Rechnung“ passt: begleichen. Das bedeutet: eine Rechnung bezahlen."],
-    ["ein Angebot offiziell machen = ein Angebot ...", "unterbreiten", ["unterbreiten", "beheben", "einhalten"], "Bei „ein Angebot offiziell machen“ passt: unterbreiten."],
-    ["ein Angebot nicht akzeptieren = ein Angebot ...", "ablehnen", ["ablehnen", "erteilen", "einholen"], "Bei „ein Angebot nicht akzeptieren“ passt: ablehnen."],
-    ["einen Fehler oder Mangel erkennen = einen Fehler ...", "feststellen", ["feststellen", "abhalten", "erteilen"], "Bei „einen Fehler erkennen“ passt: feststellen."],
-    ["einen Auftrag offiziell geben = einen Auftrag ...", "erteilen", ["erteilen", "feststellen", "begleichen"], "Bei „einen Auftrag offiziell geben“ passt: erteilen."],
-    ["ein Angebot akzeptieren = ein Angebot ...", "annehmen", ["annehmen", "ablehnen", "beheben"], "Bei „ein Angebot akzeptieren“ passt: annehmen."],
-    ["eine Frist ...", "einhalten", ["einhalten", "unterbreiten", "ablehnen"], "Bei „eine Frist“ passt: einhalten. Das bedeutet: rechtzeitig fertig sein."],
-    ["eine Besprechung ...", "abhalten", ["abhalten", "aufgeben", "begleichen"], "Bei „eine Besprechung“ passt: abhalten. Das bedeutet: eine Besprechung durchführen."],
-    ["ein Angebot von einer Firma anfordern = ein Angebot ...", "einholen", ["einholen", "abhalten", "beheben"], "Bei „ein Angebot anfordern“ passt: einholen."],
-    ["eine Lieferung ...", "entgegennehmen", ["entgegennehmen", "einholen", "erteilen"], "Bei „eine Lieferung“ passt: entgegennehmen."],
-    ["eine Bestellung ...", "aufgeben", ["aufgeben", "feststellen", "einhalten"], "Bei „eine Bestellung“ passt: aufgeben."],
-    ["einen Mangel reparieren/lösen = einen Mangel ...", "beheben", ["beheben", "begleichen", "abhalten"], "Bei „einen Mangel reparieren oder lösen“ passt: beheben."],
-
-    ["Was bedeutet „die Herausforderung“?", "eine schwierige Aufgabe", ["eine schwierige Aufgabe", "eine Rechnung", "eine Pause"], "„die Herausforderung“ bedeutet: eine schwierige Aufgabe, die man lösen muss."],
-    ["Unternehmen müssen sich auf neue Situationen ...", "einstellen", ["einstellen", "begleichen", "abhalten"], "Richtig ist: sich auf neue Situationen einstellen."],
-    ["Was bedeutet „sich behaupten“?", "stark bleiben trotz Konkurrenz", ["stark bleiben trotz Konkurrenz", "eine Rechnung bezahlen", "einen Termin absagen"], "„sich behaupten“ bedeutet: stark bleiben, obwohl es Konkurrenz oder Probleme gibt."],
-    ["„erforderlich“ bedeutet ...", "notwendig", ["notwendig", "freiwillig", "veraltet"], "„erforderlich“ bedeutet: notwendig."],
-    ["Kenntnisse kann man ...", "erwerben", ["erwerben", "abhalten", "begleichen"], "Kenntnisse erwerben bedeutet: Kenntnisse bekommen oder lernen."],
-    ["Wenn Wissen nicht mehr aktuell ist, ist es ...", "veraltet", ["veraltet", "erforderlich", "beglichen"], "„veraltet“ bedeutet: alt und nicht mehr aktuell."],
-    ["Man kann nicht immer auf alte Erfahrungen ...", "vertrauen", ["vertrauen", "abhalten", "beheben"], "„vertrauen auf“ bedeutet: glauben, dass etwas hilft oder funktioniert."],
-    ["Eine neue berufliche Richtung nennt man ...", "die Neuorientierung", ["die Neuorientierung", "die Rechnung", "die Besprechung"], "„die Neuorientierung“ bedeutet: eine neue berufliche Richtung."],
-    ["Eine Firma macht ihre Produktion neuer und besser. Die Firma ... ihre Produktion.", "modernisiert", ["modernisiert", "begleicht", "lehnt ab"], "„modernisieren“ bedeutet: neuer und besser machen."],
-    ["Eine Pause in einem Berufsweg nennt man ...", "die Unterbrechung", ["die Unterbrechung", "die Herausforderung", "die Rechnung"], "„die Unterbrechung“ bedeutet: eine Pause oder ein Stop in einem Ablauf."]
-];
-
-fragen = mischen(fragen);
-
+var alleFragen = [];
 var index = 0;
 var punkte = 0;
 var beantwortet = false;
+var aktuellerTitel = "";
+
+var info = {
+    "begleichen": "„begleichen“ passt zu: eine Rechnung begleichen, eine Schuld begleichen, einen offenen Betrag begleichen. Bedeutung: bezahlen.",
+    "abhalten": "„abhalten“ passt zu: eine Besprechung abhalten, eine Sitzung abhalten, ein Meeting abhalten.",
+    "erteilen": "„erteilen“ passt zu: einen Auftrag erteilen, eine Genehmigung erteilen, eine Erlaubnis erteilen.",
+    "beheben": "„beheben“ passt zu: einen Fehler beheben, einen Mangel beheben, ein Problem beheben.",
+    "feststellen": "„feststellen“ passt zu: einen Fehler feststellen, einen Mangel feststellen. Bedeutung: erkennen, dass etwas so ist.",
+    "einholen": "„einholen“ passt zu: ein Angebot einholen, Informationen einholen, eine Auskunft einholen.",
+    "entgegennehmen": "„entgegennehmen“ passt zu: eine Lieferung entgegennehmen, eine Beschwerde entgegennehmen, einen Anruf entgegennehmen.",
+    "aufgeben": "„aufgeben“ passt zu: eine Bestellung aufgeben, eine Anzeige aufgeben, ein Paket aufgeben.",
+    "vereinbaren": "„vereinbaren“ passt zu: einen Termin vereinbaren, einen Preis vereinbaren, ein Treffen vereinbaren.",
+    "verschieben": "„verschieben“ passt zu: einen Termin verschieben, eine Besprechung verschieben.",
+    "absagen": "„absagen“ passt zu: einen Termin absagen, ein Treffen absagen.",
+    "einladen": "„einladen“ passt zu Personen: jemanden einladen, Gäste einladen, Kolleginnen und Kollegen einladen.",
+    "nähen": "„nähen“ passt zu: Kleidung nähen, Stoff nähen, einen Knopf annähen. Bei Maschinen passt es nicht.",
+    "erforderlich": "„erforderlich“ bedeutet: notwendig.",
+    "veraltet": "„veraltet“ bedeutet: alt und nicht mehr aktuell.",
+    "die Neuorientierung": "„die Neuorientierung“ bedeutet: eine neue Richtung, zum Beispiel beruflich.",
+    "die Besprechung": "„die Besprechung“ bedeutet: ein berufliches Gespräch oder Meeting.",
+    "die Herausforderung": "„die Herausforderung“ bedeutet: eine schwierige Aufgabe, die man lösen muss.",
+    "sorgfältig": "„sorgfältig“ bedeutet: genau, ordentlich und mit viel Aufmerksamkeit.",
+    "Vielen Dank für Ihre Nachricht.": "Das passt gut als höfliche Einleitung in einer Antwort auf eine Beschwerde.",
+    "Wir bedauern die entstandenen Unannehmlichkeiten.": "Das ist eine höfliche und formelle Entschuldigung.",
+    "Hiermit möchte ich mich über die fehlerhafte Lieferung beschweren.": "Das passt gut als Einleitung einer formellen Beschwerde.",
+    "Ich bitte Sie, die fehlenden Artikel schnellstmöglich nachzuliefern.": "Das ist eine höfliche Forderung in einer Beschwerde.",
+    "Ich habe ähnliche Erfahrungen gemacht.": "Das passt gut in einen Forumsbeitrag, weil es persönlich und natürlich klingt.",
+    "Meiner Meinung nach": "„Meiner Meinung nach“ passt gut, wenn man in einem Forumsbeitrag die eigene Meinung äußert."
+};
+
+var daten = {
+    "Wortschatz": [
+        {
+            frage: "Was bedeutet „erforderlich“?",
+            richtig: "notwendig",
+            antworten: ["notwendig", "freiwillig", "bezahlt"],
+            erklaerung: "„erforderlich“ bedeutet: notwendig."
+        },
+        {
+            frage: "Wenn Wissen nicht mehr aktuell ist, ist es ...",
+            richtig: "veraltet",
+            antworten: ["veraltet", "erforderlich", "beglichen"],
+            erklaerung: "„veraltet“ bedeutet: alt und nicht mehr aktuell."
+        },
+        {
+            frage: "Eine neue berufliche Richtung nennt man ...",
+            richtig: "die Neuorientierung",
+            antworten: ["die Neuorientierung", "die Rechnung", "die Besprechung"],
+            erklaerung: "„die Neuorientierung“ bedeutet: eine neue berufliche Richtung."
+        },
+        {
+            frage: "Was bedeutet „die Herausforderung“?",
+            richtig: "eine schwierige Aufgabe",
+            antworten: ["eine schwierige Aufgabe", "eine Pause", "eine Rechnung"],
+            erklaerung: "„die Herausforderung“ bedeutet: eine schwierige Aufgabe, die man lösen muss."
+        },
+        {
+            frage: "„sorgfältig“ bedeutet ...",
+            richtig: "genau und aufmerksam",
+            antworten: ["genau und aufmerksam", "schnell und egal", "laut und stark"],
+            erklaerung: "„sorgfältig“ bedeutet: genau, ordentlich und mit viel Aufmerksamkeit."
+        }
+    ],
+
+    "Verben": [
+        {
+            frage: "Was passt? Eine Rechnung ...",
+            richtig: "begleichen",
+            antworten: ["begleichen", "abhalten", "erteilen"],
+            erklaerung: "Bei „eine Rechnung“ passt: begleichen. Das bedeutet: bezahlen."
+        },
+        {
+            frage: "Was passt? Einen Auftrag ...",
+            richtig: "erteilen",
+            antworten: ["erteilen", "beheben", "begleichen"],
+            erklaerung: "Bei „einen Auftrag“ passt: erteilen."
+        },
+        {
+            frage: "Was passt? Einen Fehler ...",
+            richtig: "beheben",
+            antworten: ["beheben", "abhalten", "einholen"],
+            erklaerung: "Bei „einen Fehler“ passt: beheben. Das bedeutet: das Problem lösen."
+        },
+        {
+            frage: "Was passt nicht? Einen Termin kann man ...",
+            richtig: "einladen",
+            antworten: ["bestätigen", "verschieben", "einladen"],
+            erklaerung: "„einladen“ passt nicht zu „Termin“. Man lädt Personen ein. Einen Termin kann man bestätigen, verschieben, absagen oder vereinbaren."
+        },
+        {
+            frage: "Was passt nicht? Eine technische Anlage kann man ...",
+            richtig: "nähen",
+            antworten: ["warten", "reparieren", "nähen"],
+            erklaerung: "„nähen“ passt nicht. Man kann Kleidung oder Stoff nähen. Eine technische Anlage kann man warten oder reparieren."
+        },
+        {
+            frage: "Was bedeutet „ein Angebot einholen“?",
+            richtig: "ein Angebot anfordern",
+            antworten: ["ein Angebot anfordern", "ein Angebot bezahlen", "ein Angebot reparieren"],
+            erklaerung: "„ein Angebot einholen“ bedeutet: aktiv ein Angebot anfordern."
+        },
+        {
+            frage: "Was passt? Eine Lieferung ...",
+            richtig: "entgegennehmen",
+            antworten: ["entgegennehmen", "erteilen", "beheben"],
+            erklaerung: "Bei „eine Lieferung“ passt: entgegennehmen. Das bedeutet: die Lieferung annehmen, wenn sie kommt."
+        },
+        {
+            frage: "Was passt? Eine Bestellung ...",
+            richtig: "aufgeben",
+            antworten: ["aufgeben", "feststellen", "abhalten"],
+            erklaerung: "Bei „eine Bestellung“ passt: aufgeben. Das bedeutet: offiziell bestellen."
+        }
+    ],
+
+    "Beschwerde schreiben": [
+        {
+            frage: "Welche Einleitung passt zu einer formellen Beschwerde?",
+            richtig: "Hiermit möchte ich mich über die fehlerhafte Lieferung beschweren.",
+            antworten: ["Hiermit möchte ich mich über die fehlerhafte Lieferung beschweren.", "Hallo, das war alles schlecht.", "Ich schreibe einfach mal."],
+            erklaerung: "Eine Beschwerde muss höflich, klar und formell sein."
+        },
+        {
+            frage: "Welche Formulierung beschreibt das Problem formell?",
+            richtig: "Leider mussten wir feststellen, dass mehrere Artikel fehlen.",
+            antworten: ["Leider mussten wir feststellen, dass mehrere Artikel fehlen.", "Alles fehlt, das ist schlecht.", "Warum haben Sie das gemacht?"],
+            erklaerung: "„Leider mussten wir feststellen, dass ...“ ist eine gute formelle Formulierung."
+        },
+        {
+            frage: "Welche Forderung klingt höflich und passend?",
+            richtig: "Ich bitte Sie, die fehlenden Artikel schnellstmöglich nachzuliefern.",
+            antworten: ["Ich bitte Sie, die fehlenden Artikel schnellstmöglich nachzuliefern.", "Schicken Sie sofort alles!", "Machen Sie endlich Ihre Arbeit."],
+            erklaerung: "Eine Forderung soll klar, aber höflich sein."
+        },
+        {
+            frage: "Welcher Schluss passt zu einer Beschwerde?",
+            richtig: "Ich bitte um eine zeitnahe Rückmeldung.",
+            antworten: ["Ich bitte um eine zeitnahe Rückmeldung.", "Das war’s.", "Viele Grüße an alle im Forum."],
+            erklaerung: "„Ich bitte um eine zeitnahe Rückmeldung“ passt gut in eine formelle Beschwerde."
+        }
+    ],
+
+    "Antwort auf Beschwerde": [
+        {
+            frage: "Welche Einleitung passt als Antwort auf eine Beschwerde?",
+            richtig: "Vielen Dank für Ihre Nachricht.",
+            antworten: ["Vielen Dank für Ihre Nachricht.", "Das ist nicht unser Problem.", "Warum schreiben Sie uns?"],
+            erklaerung: "Eine Antwort auf eine Beschwerde beginnt höflich und professionell."
+        },
+        {
+            frage: "Welche Entschuldigung klingt formell?",
+            richtig: "Wir bedauern die entstandenen Unannehmlichkeiten.",
+            antworten: ["Wir bedauern die entstandenen Unannehmlichkeiten.", "Pech gehabt.", "Das passiert eben."],
+            erklaerung: "„Wir bedauern ...“ ist eine gute formelle Entschuldigung."
+        },
+        {
+            frage: "Welche Lösung passt zu fehlender Ware?",
+            richtig: "Wir werden die fehlenden Artikel umgehend nachliefern.",
+            antworten: ["Wir werden die fehlenden Artikel umgehend nachliefern.", "Sie müssen neu bestellen.", "Wir machen nichts."],
+            erklaerung: "Bei fehlender Ware passt: nachliefern."
+        },
+        {
+            frage: "Welcher Schluss passt in eine Antwort auf eine Beschwerde?",
+            richtig: "Für Rückfragen stehen wir Ihnen gerne zur Verfügung.",
+            antworten: ["Für Rückfragen stehen wir Ihnen gerne zur Verfügung.", "Bitte schreiben Sie nicht mehr.", "Ende."],
+            erklaerung: "Dieser Satz ist höflich und typisch für formelle Geschäftskorrespondenz."
+        }
+    ],
+
+    "Forumsbeitrag": [
+        {
+            frage: "Welche Formulierung passt zu einem Forumsbeitrag?",
+            richtig: "Ich habe ähnliche Erfahrungen gemacht.",
+            antworten: ["Ich habe ähnliche Erfahrungen gemacht.", "Sehr geehrte Damen und Herren,", "Hiermit kündige ich den Vertrag."],
+            erklaerung: "Ein Forumsbeitrag ist persönlicher als ein formeller Brief."
+        },
+        {
+            frage: "Wie beginnt man gut mit der eigenen Meinung?",
+            richtig: "Meiner Meinung nach",
+            antworten: ["Meiner Meinung nach", "Mit freundlichen Grüßen", "Hiermit beschwere ich mich"],
+            erklaerung: "„Meiner Meinung nach“ passt gut zur Meinungsäußerung."
+        },
+        {
+            frage: "Welche Formulierung nennt einen Vorteil?",
+            richtig: "Ein großer Vorteil ist, dass ...",
+            antworten: ["Ein großer Vorteil ist, dass ...", "Ich fordere Sie auf, ...", "Anbei sende ich Ihnen ..."],
+            erklaerung: "In einem Forumsbeitrag muss man oft Vorteile und Nachteile nennen."
+        },
+        {
+            frage: "Welche Formulierung nennt einen Nachteil?",
+            richtig: "Ein Nachteil liegt darin, dass ...",
+            antworten: ["Ein Nachteil liegt darin, dass ...", "Ich bitte um Nachlieferung.", "Sehr geehrter Herr Müller,"],
+            erklaerung: "„Ein Nachteil liegt darin, dass ...“ ist gut für Diskussionen und Forumsbeiträge."
+        }
+    ]
+};
 
 function mischen(liste) {
-    for (var i = liste.length - 1; i > 0; i--) {
+    var kopie = liste.slice();
+    for (var i = kopie.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
-        var temp = liste[i];
-        liste[i] = liste[j];
-        liste[j] = temp;
+        var temp = kopie[i];
+        kopie[i] = kopie[j];
+        kopie[j] = temp;
     }
-    return liste;
+    return kopie;
+}
+
+function zeigeMenu() {
+    var box = document.getElementById("box");
+    box.innerHTML =
+        "<h1>Deutsch-B2-Trainer</h1>" +
+        "<p class='klein'>Wähle, was du üben möchtest.</p>" +
+        "<button class='menuButton' onclick=\"startKategorie('Wortschatz')\">1. Wortschatz</button>" +
+        "<button class='menuButton' onclick=\"startKategorie('Verben')\">2. Verben</button>" +
+        "<button class='menuButton' onclick=\"startKategorie('Beschwerde schreiben')\">3. Beschwerde schreiben</button>" +
+        "<button class='menuButton' onclick=\"startKategorie('Antwort auf Beschwerde')\">4. Antwort auf Beschwerde</button>" +
+        "<button class='menuButton' onclick=\"startKategorie('Forumsbeitrag')\">5. Forumsbeitrag</button>" +
+        "<button class='menuButton' onclick=\"startGemischt()\">6. Gemischtes Training</button>";
+}
+
+function startKategorie(name) {
+    aktuellerTitel = name;
+    alleFragen = mischen(daten[name]);
+    index = 0;
+    punkte = 0;
+    zeigeFrage();
+}
+
+function startGemischt() {
+    aktuellerTitel = "Gemischtes Training";
+    var gemischt = [];
+    for (var kategorie in daten) {
+        gemischt = gemischt.concat(daten[kategorie]);
+    }
+    alleFragen = mischen(gemischt);
+    index = 0;
+    punkte = 0;
+    zeigeFrage();
 }
 
 function zeigeFrage() {
     beantwortet = false;
-    document.getElementById("nummer").innerText = index + 1;
-    document.getElementById("gesamt").innerText = fragen.length;
-    document.getElementById("frage").innerText = fragen[index][0];
+    var f = alleFragen[index];
+    var antworten = mischen(f.antworten);
 
-    var meldung = document.getElementById("meldung");
-    meldung.innerHTML = "";
-    meldung.style.display = "none";
+    var html =
+        "<h1>Deutsch-B2-Trainer</h1>" +
+        "<p class='klein'>" + aktuellerTitel + "</p>" +
+        "<div class='info'>Punkte: <span id='punkte'>" + punkte + "</span> | Frage: " + (index + 1) + "/" + alleFragen.length + "</div>" +
+        "<div class='frage'>" + f.frage + "</div>" +
+        "<div id='antworten'></div>" +
+        "<div class='meldung' id='meldung' style='display:none;'></div>" +
+        "<button onclick='weiter()' id='weiterButton' style='display:none;'>Weiter</button>" +
+        "<button class='zurueck' onclick='zeigeMenu()'>Zurück zum Menü</button>";
 
-    document.getElementById("weiterButton").style.display = "none";
-
-    var antworten = fragen[index][2].slice();
-    antworten = mischen(antworten);
+    document.getElementById("box").innerHTML = html;
 
     var div = document.getElementById("antworten");
-    div.innerHTML = "";
-
     for (var i = 0; i < antworten.length; i++) {
         var b = document.createElement("button");
         b.innerText = antworten[i];
@@ -221,29 +352,18 @@ function zeigeFrage() {
 }
 
 function findeInfo(antwort) {
-    if (wortInfo[antwort]) {
-        return wortInfo[antwort];
+    if (info[antwort]) {
+        return info[antwort];
     }
-
-    if (antwort === "einstellen") {
-        return "„einstellen“ passt hier als Teil von: sich auf etwas einstellen.";
-    }
-    if (antwort === "modernisiert") {
-        return "„modernisiert“ kommt von „modernisieren“: neuer und besser machen.";
-    }
-    if (antwort === "vertrauen") {
-        return "„vertrauen“ passt oft mit „auf“: auf etwas vertrauen.";
-    }
-
-    return "Diese Antwort passt hier nicht so gut. Achte auf die typische Verbindung.";
+    return "Diese Antwort passt hier nicht so gut. Achte auf die typische Verbindung und den Kontext.";
 }
 
 function pruefen(button) {
     if (beantwortet) return;
     beantwortet = true;
 
-    var richtigeAntwort = fragen[index][1];
-    var erklaerung = fragen[index][3];
+    var f = alleFragen[index];
+    var richtigeAntwort = f.richtig;
     var gewaehlteAntwort = button.innerText;
     var alleButtons = document.querySelectorAll("#antworten button");
 
@@ -258,19 +378,18 @@ function pruefen(button) {
 
     if (gewaehlteAntwort === richtigeAntwort) {
         punkte++;
-        document.getElementById("punkte").innerText = punkte;
         meldung.innerHTML =
-            "<b>Richtig!</b><br>" +
-            erklaerung;
+            "<b>Richtig!</b><br><br>" +
+            f.erklaerung;
     } else {
         button.className = "falsch";
         meldung.innerHTML =
             "<b>Nicht richtig.</b><br><br>" +
             "<b>Warum?</b><br>" +
-            erklaerung + "<br><br>" +
+            f.erklaerung + "<br><br>" +
             "<b>Deine Antwort war:</b> " + gewaehlteAntwort + "<br>" +
             findeInfo(gewaehlteAntwort) + "<br><br>" +
-            "<b>Merke:</b> Bei dieser Aufgabe ist richtig: <b>" + richtigeAntwort + "</b>.";
+            "<b>Merke:</b> Richtig ist: <b>" + richtigeAntwort + "</b>.";
     }
 
     document.getElementById("weiterButton").style.display = "block";
@@ -278,20 +397,20 @@ function pruefen(button) {
 
 function weiter() {
     index++;
-
-    if (index >= fragen.length) {
-        document.querySelector(".box").innerHTML =
+    if (index >= alleFragen.length) {
+        document.getElementById("box").innerHTML =
             "<h1>Fertig!</h1>" +
-            "<div class='frage'>Du hast " + punkte + " von " + fragen.length + " Punkten erreicht.</div>" +
-            "<button onclick='location.reload()'>Noch einmal spielen</button>";
+            "<p class='klein'>" + aktuellerTitel + "</p>" +
+            "<div class='frage'>Du hast " + punkte + " von " + alleFragen.length + " Punkten erreicht.</div>" +
+            "<button onclick='startKategorie(aktuellerTitel)'>Noch einmal diese Kategorie spielen</button>" +
+            "<button onclick='zeigeMenu()'>Zurück zum Menü</button>";
     } else {
         zeigeFrage();
     }
 }
 
-zeigeFrage();
+zeigeMenu();
 </script>
 
 </body>
 </html>
-
