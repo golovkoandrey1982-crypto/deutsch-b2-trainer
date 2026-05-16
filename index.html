@@ -220,6 +220,33 @@ for (var key in extraInfo3) {
     info[key] = extraInfo3[key];
 }
 
+var extraInfo4 = {
+    "die Anschrift": "„die Anschrift“ bedeutet: Adresse, also Straße, Hausnummer, Postleitzahl und Ort.",
+    "der Geburtsort": "„der Geburtsort“ ist der Ort, an dem eine Person geboren wurde.",
+    "die Berufserfahrung": "„die Berufserfahrung“ bedeutet: Erfahrung, die man durch Arbeit gesammelt hat.",
+    "die Weiterbildung": "„die Weiterbildung“ ist ein Kurs oder eine Schulung nach der Ausbildung oder nach dem Studium.",
+    "die Qualifikation": "„die Qualifikation“ bedeutet: berufliche Fähigkeit, Ausbildung oder Voraussetzung für eine Stelle.",
+    "die Kenntnisse": "„die Kenntnisse“ bedeutet: Wissen oder Fähigkeiten in einem bestimmten Bereich.",
+    "die Fähigkeit": "„die Fähigkeit“ bedeutet: etwas, was man gut kann.",
+    "die Stellenausschreibung": "„die Stellenausschreibung“ ist eine Anzeige, in der ein Arbeitgeber eine Arbeitsstelle anbietet.",
+    "die Rückmeldung": "„die Rückmeldung“ bedeutet: Antwort oder Reaktion.",
+    "das Vorstellungsgespräch": "„das Vorstellungsgespräch“ ist ein Gespräch zwischen Bewerber und Arbeitgeber.",
+    "der Lebenslauf": "„der Lebenslauf“ ist ein Dokument mit persönlichen Daten, Ausbildung und Berufserfahrung.",
+    "die Bewerbung": "„die Bewerbung“ sind die Unterlagen, mit denen man sich um eine Stelle bewirbt.",
+    "der Arbeitgeber": "„der Arbeitgeber“ ist eine Firma oder Person, die Arbeit gibt.",
+    "der Arbeitnehmer": "„der Arbeitnehmer“ ist eine Person, die für eine Firma arbeitet.",
+    "die Arbeitszeit": "„die Arbeitszeit“ ist die Zeit, in der man arbeitet.",
+    "das Gehalt": "„das Gehalt“ ist das Geld, das man regelmäßig für die Arbeit bekommt.",
+    "die Kündigung": "„die Kündigung“ bedeutet: ein Arbeitsvertrag oder Vertrag wird beendet.",
+    "der Vertrag": "„der Vertrag“ ist eine schriftliche oder mündliche Vereinbarung.",
+    "die Lieferung": "„die Lieferung“ ist Ware, die zu einem Kunden oder einer Firma gebracht wird.",
+    "die Reklamation": "„die Reklamation“ ist eine Beschwerde über eine fehlerhafte Ware oder Leistung."
+};
+
+for (var key in extraInfo4) {
+    info[key] = extraInfo4[key];
+}
+
 var daten = {
     "Wortschatz": [
         {
@@ -251,6 +278,126 @@ var daten = {
             richtig: "genau und aufmerksam",
             antworten: ["genau und aufmerksam", "schnell und egal", "laut und stark"],
             erklaerung: "„sorgfältig“ bedeutet: genau, ordentlich und mit viel Aufmerksamkeit."
+        }        ,
+        {
+            frage: "Was bedeutet „die Anschrift“?",
+            richtig: "die Adresse",
+            antworten: ["die Adresse", "die Rechnung", "die Arbeitszeit"],
+            erklaerung: "„die Anschrift“ bedeutet: die Adresse."
+        },
+        {
+            frage: "Was ist der „Geburtsort“?",
+            richtig: "der Ort, an dem man geboren wurde",
+            antworten: ["der Ort, an dem man geboren wurde", "der Ort, an dem man arbeitet", "der Ort, an dem man einkauft"],
+            erklaerung: "Der Geburtsort ist der Ort, an dem eine Person geboren wurde."
+        },
+        {
+            frage: "Was bedeutet „Berufserfahrung“?",
+            richtig: "Erfahrung durch Arbeit",
+            antworten: ["Erfahrung durch Arbeit", "eine Pause", "ein Gehalt"],
+            erklaerung: "Berufserfahrung sammelt man durch Arbeit und Praxis."
+        },
+        {
+            frage: "Was bedeutet „Weiterbildung“?",
+            richtig: "ein Kurs oder eine Schulung für den Beruf",
+            antworten: ["ein Kurs oder eine Schulung für den Beruf", "eine Kündigung", "eine Rechnung"],
+            erklaerung: "Eine Weiterbildung ist ein Kurs oder eine Schulung, mit der man beruflich weiterlernt."
+        },
+        {
+            frage: "Was bedeutet „Qualifikation“?",
+            richtig: "berufliche Fähigkeit oder Voraussetzung",
+            antworten: ["berufliche Fähigkeit oder Voraussetzung", "ein Fehler", "eine Lieferung"],
+            erklaerung: "Eine Qualifikation ist eine Fähigkeit oder Voraussetzung für eine Arbeit."
+        },
+        {
+            frage: "Was bedeutet „Kenntnisse“?",
+            richtig: "Wissen oder Fähigkeiten",
+            antworten: ["Wissen oder Fähigkeiten", "Geldbetrag", "Liefertermin"],
+            erklaerung: "Kenntnisse sind Wissen oder Fähigkeiten in einem Bereich."
+        },
+        {
+            frage: "Was bedeutet „Fähigkeit“?",
+            richtig: "etwas, was man kann",
+            antworten: ["etwas, was man kann", "ein Vertrag", "eine Beschwerde"],
+            erklaerung: "Eine Fähigkeit ist etwas, was man kann."
+        },
+        {
+            frage: "Was ist eine „Stellenausschreibung“?",
+            richtig: "eine Anzeige für eine freie Arbeitsstelle",
+            antworten: ["eine Anzeige für eine freie Arbeitsstelle", "eine Kündigung", "eine Rechnung"],
+            erklaerung: "Eine Stellenausschreibung ist eine Anzeige für eine freie Stelle."
+        },
+        {
+            frage: "Was bedeutet „Rückmeldung“?",
+            richtig: "Antwort oder Reaktion",
+            antworten: ["Antwort oder Reaktion", "Arbeitszeit", "Lieferung"],
+            erklaerung: "Eine Rückmeldung ist eine Antwort oder Reaktion."
+        },
+        {
+            frage: "Was ist ein „Vorstellungsgespräch“?",
+            richtig: "ein Gespräch zwischen Bewerber und Arbeitgeber",
+            antworten: ["ein Gespräch zwischen Bewerber und Arbeitgeber", "ein Vertrag mit einer Bank", "eine Lieferung an Kunden"],
+            erklaerung: "Ein Vorstellungsgespräch ist ein Gespräch im Bewerbungsprozess."
+        },
+        {
+            frage: "Was ist ein „Lebenslauf“?",
+            richtig: "ein Dokument mit Ausbildung und Berufserfahrung",
+            antworten: ["ein Dokument mit Ausbildung und Berufserfahrung", "eine Rechnung", "eine Reklamation"],
+            erklaerung: "Der Lebenslauf zeigt persönliche Daten, Ausbildung, Kenntnisse und Berufserfahrung."
+        },
+        {
+            frage: "Was bedeutet „Bewerbung“?",
+            richtig: "Unterlagen für eine Arbeitsstelle",
+            antworten: ["Unterlagen für eine Arbeitsstelle", "ein Lieferdokument", "eine Zahlung"],
+            erklaerung: "Mit einer Bewerbung bewirbt man sich um eine Stelle."
+        },
+        {
+            frage: "Wer ist der „Arbeitgeber“?",
+            richtig: "die Firma oder Person, die Arbeit gibt",
+            antworten: ["die Firma oder Person, die Arbeit gibt", "die Person, die eine Rechnung bezahlt", "der Kunde"],
+            erklaerung: "Der Arbeitgeber gibt Arbeit und zahlt normalerweise das Gehalt."
+        },
+        {
+            frage: "Wer ist der „Arbeitnehmer“?",
+            richtig: "die Person, die für eine Firma arbeitet",
+            antworten: ["die Person, die für eine Firma arbeitet", "die Firma selbst", "ein Lieferant"],
+            erklaerung: "Der Arbeitnehmer arbeitet für einen Arbeitgeber."
+        },
+        {
+            frage: "Was bedeutet „Arbeitszeit“?",
+            richtig: "die Zeit, in der man arbeitet",
+            antworten: ["die Zeit, in der man arbeitet", "eine Pause im Urlaub", "eine Rechnung"],
+            erklaerung: "Arbeitszeit ist die Zeit, in der man arbeitet."
+        },
+        {
+            frage: "Was bedeutet „Gehalt“?",
+            richtig: "Geld, das man für die Arbeit bekommt",
+            antworten: ["Geld, das man für die Arbeit bekommt", "ein Fehler im Vertrag", "eine Lieferung"],
+            erklaerung: "Das Gehalt bekommt man regelmäßig für seine Arbeit."
+        },
+        {
+            frage: "Was bedeutet „Kündigung“?",
+            richtig: "Beendigung eines Vertrags oder Arbeitsverhältnisses",
+            antworten: ["Beendigung eines Vertrags oder Arbeitsverhältnisses", "eine Einladung", "eine Rückmeldung"],
+            erklaerung: "Eine Kündigung beendet einen Vertrag oder ein Arbeitsverhältnis."
+        },
+        {
+            frage: "Was ist ein „Vertrag“?",
+            richtig: "eine Vereinbarung zwischen zwei Seiten",
+            antworten: ["eine Vereinbarung zwischen zwei Seiten", "eine Maschine", "eine Pause"],
+            erklaerung: "Ein Vertrag ist eine Vereinbarung, oft schriftlich."
+        },
+        {
+            frage: "Was bedeutet „Lieferung“?",
+            richtig: "Ware, die gebracht wird",
+            antworten: ["Ware, die gebracht wird", "ein Vorstellungsgespräch", "ein Lebenslauf"],
+            erklaerung: "Eine Lieferung ist Ware, die zu einem Kunden oder einer Firma gebracht wird."
+        },
+        {
+            frage: "Was bedeutet „Reklamation“?",
+            richtig: "Beschwerde über fehlerhafte Ware oder Leistung",
+            antworten: ["Beschwerde über fehlerhafte Ware oder Leistung", "eine normale Pause", "eine Bewerbung"],
+            erklaerung: "Eine Reklamation ist eine Beschwerde, wenn etwas fehlerhaft ist."
         }
     ],
 
@@ -600,5 +747,7 @@ zeigeMenu();
 
 </body>
 </html>
+
+
 
 
