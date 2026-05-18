@@ -265,6 +265,30 @@ for (var key in extraInfo5) {
     info[key] = extraInfo5[key];
 }
 
+
+// PORTION_4_INFO
+var extraInfo6 = {
+    "der Liefertermin": "„der Liefertermin“ ist der Termin, an dem die Ware geliefert werden soll.",
+    "der Kundendienst": "„der Kundendienst“ hilft Kunden bei Fragen, Problemen oder Reklamationen.",
+    "der Retourenschein": "„der Retourenschein“ ist ein Dokument für die Rücksendung von Ware.",
+    "die Nachlieferung": "„die Nachlieferung“ bedeutet: fehlende Ware wird später geliefert.",
+    "die Wiedergutmachung": "„die Wiedergutmachung“ ist eine Entschädigung, zum Beispiel Rabatt, Gutschein oder Erstattung.",
+    "der Preisnachlass": "„der Preisnachlass“ bedeutet: der Preis wird reduziert.",
+    "der Rechnungsfehler": "„der Rechnungsfehler“ ist ein Fehler in einer Rechnung.",
+    "die Unannehmlichkeit": "„die Unannehmlichkeit“ bedeutet: eine unangenehme Situation oder ein Problem für den Kunden.",
+    "die Verzögerung": "„die Verzögerung“ bedeutet: etwas dauert länger als geplant.",
+    "der Mangel": "„der Mangel“ ist ein Fehler oder Defekt.",
+    "die Frist": "„die Frist“ ist ein Zeitraum, bis zu dem etwas erledigt sein muss.",
+    "der Arbeitsablauf": "„der Arbeitsablauf“ beschreibt, wie Arbeit Schritt für Schritt organisiert ist.",
+    "die Qualitätskontrolle": "„die Qualitätskontrolle“ prüft, ob die Qualität stimmt.",
+    "die Tagesordnung": "„die Tagesordnung“ ist eine Liste der Themen für eine Besprechung.",
+    "das Protokoll": "„das Protokoll“ ist eine schriftliche Zusammenfassung einer Besprechung."
+};
+
+for (var key in extraInfo6) {
+    info[key] = extraInfo6[key];
+}
+
 var daten = {
     "Wortschatz": [
         {
@@ -416,6 +440,96 @@ var daten = {
             richtig: "Beschwerde über fehlerhafte Ware oder Leistung",
             antworten: ["Beschwerde über fehlerhafte Ware oder Leistung", "eine normale Pause", "eine Bewerbung"],
             erklaerung: "Eine Reklamation ist eine Beschwerde, wenn etwas fehlerhaft ist."
+        }        ,
+        {
+            frage: "Was ist ein „Liefertermin“?",
+            richtig: "der Termin, an dem Ware geliefert werden soll",
+            antworten: ["der Termin, an dem Ware geliefert werden soll", "ein Vorstellungsgespräch", "eine Bewerbung"],
+            erklaerung: "Der Liefertermin ist der Termin, an dem die Ware geliefert werden soll."
+        },
+        {
+            frage: "Was bedeutet „Kundendienst“?",
+            richtig: "eine Abteilung, die Kunden hilft",
+            antworten: ["eine Abteilung, die Kunden hilft", "eine Maschine", "eine Gehaltszahlung"],
+            erklaerung: "Der Kundendienst hilft bei Fragen, Problemen oder Reklamationen."
+        },
+        {
+            frage: "Was ist ein „Retourenschein“?",
+            richtig: "ein Dokument für die Rücksendung",
+            antworten: ["ein Dokument für die Rücksendung", "ein Vertrag", "eine Kündigung"],
+            erklaerung: "Mit einem Retourenschein kann man Ware zurücksenden."
+        },
+        {
+            frage: "Was bedeutet „Nachlieferung“?",
+            richtig: "fehlende Ware wird später geliefert",
+            antworten: ["fehlende Ware wird später geliefert", "ein Termin wird abgesagt", "eine Rechnung wird geschrieben"],
+            erklaerung: "Eine Nachlieferung bedeutet: fehlende Ware wird später geliefert."
+        },
+        {
+            frage: "Was bedeutet „Wiedergutmachung“?",
+            richtig: "eine Entschädigung für ein Problem",
+            antworten: ["eine Entschädigung für ein Problem", "eine neue Arbeitsstelle", "eine Tagesordnung"],
+            erklaerung: "Eine Wiedergutmachung kann zum Beispiel ein Rabatt, Gutschein oder eine Erstattung sein."
+        },
+        {
+            frage: "Was ist ein „Preisnachlass“?",
+            richtig: "eine Reduzierung des Preises",
+            antworten: ["eine Reduzierung des Preises", "eine Lieferung", "ein Lebenslauf"],
+            erklaerung: "Ein Preisnachlass bedeutet: Der Preis wird reduziert."
+        },
+        {
+            frage: "Was ist ein „Rechnungsfehler“?",
+            richtig: "ein Fehler in einer Rechnung",
+            antworten: ["ein Fehler in einer Rechnung", "ein Arbeitsplatz", "ein Gespräch"],
+            erklaerung: "Ein Rechnungsfehler ist ein Fehler in einer Rechnung."
+        },
+        {
+            frage: "Was bedeutet „Unannehmlichkeit“?",
+            richtig: "eine unangenehme Situation",
+            antworten: ["eine unangenehme Situation", "eine freie Stelle", "ein Rabatt"],
+            erklaerung: "Eine Unannehmlichkeit ist eine unangenehme Situation oder ein Problem."
+        },
+        {
+            frage: "Was bedeutet „Verzögerung“?",
+            richtig: "etwas dauert länger als geplant",
+            antworten: ["etwas dauert länger als geplant", "etwas wird sofort erledigt", "etwas ist kostenlos"],
+            erklaerung: "Eine Verzögerung bedeutet: Etwas dauert länger als geplant."
+        },
+        {
+            frage: "Was ist ein „Mangel“?",
+            richtig: "ein Fehler oder Defekt",
+            antworten: ["ein Fehler oder Defekt", "ein Vorteil", "eine Bewerbung"],
+            erklaerung: "Ein Mangel ist ein Fehler, Defekt oder Problem."
+        },
+        {
+            frage: "Was bedeutet „Frist“?",
+            richtig: "ein Zeitraum, bis zu dem etwas erledigt sein muss",
+            antworten: ["ein Zeitraum, bis zu dem etwas erledigt sein muss", "eine Ware", "ein Kollege"],
+            erklaerung: "Eine Frist ist ein Zeitraum, bis zu dem etwas erledigt sein muss."
+        },
+        {
+            frage: "Was ist ein „Arbeitsablauf“?",
+            richtig: "die Organisation der Arbeit Schritt für Schritt",
+            antworten: ["die Organisation der Arbeit Schritt für Schritt", "eine Pause", "eine Rechnung"],
+            erklaerung: "Der Arbeitsablauf beschreibt, wie Arbeit organisiert ist."
+        },
+        {
+            frage: "Was bedeutet „Qualitätskontrolle“?",
+            richtig: "Prüfung, ob die Qualität stimmt",
+            antworten: ["Prüfung, ob die Qualität stimmt", "eine Kündigung", "ein Gehalt"],
+            erklaerung: "Bei der Qualitätskontrolle prüft man, ob die Qualität stimmt."
+        },
+        {
+            frage: "Was ist eine „Tagesordnung“?",
+            richtig: "eine Liste der Themen für eine Besprechung",
+            antworten: ["eine Liste der Themen für eine Besprechung", "eine Lieferung", "eine Zahlung"],
+            erklaerung: "Die Tagesordnung zeigt, welche Themen in einer Besprechung behandelt werden."
+        },
+        {
+            frage: "Was ist ein „Protokoll“?",
+            richtig: "eine schriftliche Zusammenfassung einer Besprechung",
+            antworten: ["eine schriftliche Zusammenfassung einer Besprechung", "eine Maschine", "eine Reklamation"],
+            erklaerung: "Ein Protokoll fasst die wichtigsten Punkte einer Besprechung schriftlich zusammen."
         }
     ],
 
@@ -545,6 +659,66 @@ var daten = {
             richtig: "aufbauen",
             antworten: ["unterschreiben", "abschließen", "aufbauen"],
             erklaerung: "„aufbauen“ passt nicht zu Vertrag. Einen Vertrag kann man unterschreiben, abschließen oder brechen."
+        }        ,
+        {
+            frage: "Was passt? Eine Frist kann man ...",
+            richtig: "einhalten",
+            antworten: ["einhalten", "nähen", "begleichen"],
+            erklaerung: "Eine Frist einhalten bedeutet: rechtzeitig fertig sein."
+        },
+        {
+            frage: "Was passt? Einen Liefertermin kann man ...",
+            richtig: "vereinbaren",
+            antworten: ["vereinbaren", "beheben", "ausdrucken"],
+            erklaerung: "Einen Liefertermin vereinbaren bedeutet: gemeinsam einen Termin festlegen."
+        },
+        {
+            frage: "Was passt? Einen Mangel kann man ...",
+            richtig: "feststellen",
+            antworten: ["feststellen", "abhalten", "bezahlen"],
+            erklaerung: "Einen Mangel feststellen bedeutet: erkennen, dass es einen Fehler gibt."
+        },
+        {
+            frage: "Was passt? Einen Preisnachlass kann man ...",
+            richtig: "gewähren",
+            antworten: ["gewähren", "nähen", "kündigen"],
+            erklaerung: "Einen Preisnachlass gewähren bedeutet: den Preis reduzieren."
+        },
+        {
+            frage: "Was passt? Versandkosten kann man ...",
+            richtig: "erstatten",
+            antworten: ["erstatten", "abhalten", "einladen"],
+            erklaerung: "Versandkosten erstatten bedeutet: die Kosten zurückzahlen."
+        },
+        {
+            frage: "Was passt? Eine Tagesordnung kann man ...",
+            richtig: "besprechen",
+            antworten: ["besprechen", "zurückschicken", "begleichen"],
+            erklaerung: "Eine Tagesordnung besprechen bedeutet: die geplanten Themen in einer Sitzung behandeln."
+        },
+        {
+            frage: "Was passt? Ein Protokoll kann man ...",
+            richtig: "erstellen",
+            antworten: ["erstellen", "beheben", "einladen"],
+            erklaerung: "Ein Protokoll erstellen bedeutet: die wichtigsten Punkte schriftlich festhalten."
+        },
+        {
+            frage: "Was passt? Arbeitsabläufe kann man ...",
+            richtig: "verbessern",
+            antworten: ["verbessern", "bezahlen", "nähen"],
+            erklaerung: "Arbeitsabläufe verbessern bedeutet: die Arbeit besser organisieren."
+        },
+        {
+            frage: "Was passt? Qualitätskontrollen kann man ...",
+            richtig: "durchführen",
+            antworten: ["durchführen", "kündigen", "begleichen"],
+            erklaerung: "Qualitätskontrollen durchführen bedeutet: die Qualität prüfen."
+        },
+        {
+            frage: "Was passt? Eine Reklamation kann man ...",
+            richtig: "bearbeiten",
+            antworten: ["bearbeiten", "nähen", "abhalten"],
+            erklaerung: "Eine Reklamation bearbeiten bedeutet: die Beschwerde prüfen und lösen."
         }
     ],
 
@@ -599,6 +773,54 @@ var daten = {
             richtig: "Für Rückfragen stehen wir Ihnen gerne zur Verfügung.",
             antworten: ["Für Rückfragen stehen wir Ihnen gerne zur Verfügung.", "Bitte schreiben Sie nicht mehr.", "Ende."],
             erklaerung: "Dieser Satz ist höflich und typisch für formelle Geschäftskorrespondenz."
+        }        ,
+        {
+            frage: "Welcher Satz passt gut, um Verständnis zu zeigen?",
+            richtig: "Wir verstehen sehr gut, dass diese Situation für Sie ärgerlich war.",
+            antworten: ["Wir verstehen sehr gut, dass diese Situation für Sie ärgerlich war.", "Das ist nicht so schlimm.", "Sie übertreiben."],
+            erklaerung: "In einer Antwort auf eine Beschwerde zeigt man Verständnis für den Kunden."
+        },
+        {
+            frage: "Welcher Satz passt bei einem Lagerfehler?",
+            richtig: "Bei der Zusammenstellung Ihrer Bestellung kam es leider zu einer Verwechslung im Lager.",
+            antworten: ["Bei der Zusammenstellung Ihrer Bestellung kam es leider zu einer Verwechslung im Lager.", "Sie haben bestimmt falsch gelesen.", "Wir wissen nichts."],
+            erklaerung: "Dieser Satz erklärt den Grund sachlich und professionell."
+        },
+        {
+            frage: "Welche Lösung passt bei falscher Ware?",
+            richtig: "Wir werden die falsch gelieferten Produkte selbstverständlich austauschen.",
+            antworten: ["Wir werden die falsch gelieferten Produkte selbstverständlich austauschen.", "Sie müssen die falsche Ware behalten.", "Wir können nichts tun."],
+            erklaerung: "Bei falscher Ware passt: austauschen."
+        },
+        {
+            frage: "Welche Lösung passt bei unfreundlichem Verhalten?",
+            richtig: "Wir werden unsere Mitarbeitenden nochmals auf korrektes und höfliches Verhalten hinweisen.",
+            antworten: ["Wir werden unsere Mitarbeitenden nochmals auf korrektes und höfliches Verhalten hinweisen.", "Das Verhalten ist egal.", "Beschweren Sie sich nicht."],
+            erklaerung: "Bei unfreundlichem Verhalten reagiert man professionell und kündigt Verbesserung an."
+        },
+        {
+            frage: "Welcher Satz passt, wenn man Wiederholung vermeiden will?",
+            richtig: "Wir werden künftig die Abläufe genauer kontrollieren.",
+            antworten: ["Wir werden künftig die Abläufe genauer kontrollieren.", "Es kann jederzeit wieder passieren.", "Wir ändern nichts."],
+            erklaerung: "In einer guten Antwort erklärt man, wie man solche Probleme künftig vermeiden will."
+        },
+        {
+            frage: "Welche Wiedergutmachung passt bei zu viel gezahltem Betrag?",
+            richtig: "Selbstverständlich erstatten wir Ihnen den zu viel gezahlten Betrag.",
+            antworten: ["Selbstverständlich erstatten wir Ihnen den zu viel gezahlten Betrag.", "Sie müssen noch mehr bezahlen.", "Wir ignorieren die Rechnung."],
+            erklaerung: "Bei zu viel gezahltem Betrag passt: erstatten."
+        },
+        {
+            frage: "Welcher Satz passt bei Terminproblemen?",
+            richtig: "Gerne vereinbaren wir mit Ihnen einen neuen Termin.",
+            antworten: ["Gerne vereinbaren wir mit Ihnen einen neuen Termin.", "Termine interessieren uns nicht.", "Sie bekommen keinen Termin."],
+            erklaerung: "Bei Terminproblemen bietet man höflich einen neuen Termin an."
+        },
+        {
+            frage: "Welche Formulierung ist in der Prüfung besser?",
+            richtig: "Wir hoffen, dass Sie mit unserem Lösungsvorschlag einverstanden sind.",
+            antworten: ["Wir hoffen, dass Sie mit unserem Lösungsvorschlag einverstanden sind.", "Sie müssen unsere Lösung akzeptieren.", "Das ist jetzt Ihr Problem."],
+            erklaerung: "Dieser Satz klingt höflich und kundenorientiert."
         }
     ],
 
@@ -860,6 +1082,7 @@ zeigeMenu();
 
 </body>
 </html>
+
 
 
 
