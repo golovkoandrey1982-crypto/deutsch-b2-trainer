@@ -247,6 +247,24 @@ for (var key in extraInfo4) {
     info[key] = extraInfo4[key];
 }
 
+// MASTER_BESCHWERDE_INFO_1
+var extraInfo5 = {
+    "Vielen Dank für Ihre Nachricht.": "Das ist eine höfliche Einleitung in einer Antwort auf eine Beschwerde.",
+    "Wir bedauern die entstandenen Unannehmlichkeiten.": "Das ist eine formelle Entschuldigung. Sie passt sehr gut in eine Antwort auf eine Beschwerde.",
+    "Nach unserer Prüfung kam es leider zu einem internen Fehler.": "Das ist ein neutraler Grund. Er passt, wenn die Aufgabe keinen konkreten Grund nennt.",
+    "Aufgrund des hohen Arbeitsaufkommens kam es leider zu Verzögerungen.": "Das passt gut bei Liefer- oder Terminverzögerungen.",
+    "Wir werden die fehlende Ware umgehend nachliefern.": "Das ist eine passende Lösung bei unvollständiger Lieferung.",
+    "Wir werden die Rechnung sofort prüfen und korrigieren.": "Das passt bei einem Rechnungsfehler.",
+    "Als Wiedergutmachung möchten wir Ihnen einen Rabatt anbieten.": "Das benutzt man nur, wenn Rabatt in der Aufgabe erlaubt oder gefordert ist.",
+    "Sollten Sie noch Fragen haben, zögern Sie bitte nicht, uns zu kontaktieren.": "Das ist ein höflicher Schlusssatz.",
+    "Ein Rabatt ist immer notwendig.": "Das ist falsch. Einen Rabatt sollte man nur anbieten, wenn er in der Aufgabe steht oder erlaubt ist.",
+    "Pflichtpunkte zuerst schreiben.": "Das ist sehr wichtig: In der Prüfung zuerst die Punkte aus der Teamleitungs-E-Mail bearbeiten."
+};
+
+for (var key in extraInfo5) {
+    info[key] = extraInfo5[key];
+}
+
 var daten = {
     "Wortschatz": [
         {
@@ -610,6 +628,83 @@ var daten = {
             erklaerung: "„Ein Nachteil liegt darin, dass ...“ ist gut für Diskussionen und Forumsbeiträge."
         }
     ]
+// MASTER_BESCHWERDE_DATEN_1
+,
+    "Master: Antwort auf Beschwerde": [
+        {
+            frage: "Was ist die beste Einleitung für eine Antwort auf eine Beschwerde?",
+            richtig: "Vielen Dank für Ihre Nachricht.",
+            antworten: ["Vielen Dank für Ihre Nachricht.", "Warum beschweren Sie sich?", "Das ist nicht unser Problem."],
+            erklaerung: "Eine Antwort auf eine Beschwerde beginnt höflich und professionell. Sehr sicher ist: „Vielen Dank für Ihre Nachricht.“"
+        },
+        {
+            frage: "Welcher Satz passt als Entschuldigung?",
+            richtig: "Wir bedauern die entstandenen Unannehmlichkeiten.",
+            antworten: ["Wir bedauern die entstandenen Unannehmlichkeiten.", "Das passiert eben.", "Sie müssen warten."],
+            erklaerung: "In einer formellen Antwort entschuldigt man sich höflich. „Wir bedauern ...“ ist dafür sehr passend."
+        },
+        {
+            frage: "Welcher Satz erklärt einen allgemeinen Grund neutral?",
+            richtig: "Nach unserer Prüfung kam es leider zu einem internen Fehler.",
+            antworten: ["Nach unserer Prüfung kam es leider zu einem internen Fehler.", "Sie haben bestimmt falsch bestellt.", "Niemand weiß, was passiert ist."],
+            erklaerung: "Wenn kein genauer Grund genannt wird, kann man neutral schreiben: „Nach unserer Prüfung kam es leider zu einem internen Fehler.“"
+        },
+        {
+            frage: "Welcher Grund passt bei einer verspäteten Lieferung?",
+            richtig: "Aufgrund des hohen Arbeitsaufkommens kam es leider zu Verzögerungen.",
+            antworten: ["Aufgrund des hohen Arbeitsaufkommens kam es leider zu Verzögerungen.", "Die Rechnung wurde bezahlt.", "Der Kunde war unfreundlich."],
+            erklaerung: "Bei Liefer- oder Terminproblemen passt oft: hohes Arbeitsaufkommen, Versandproblem, technisches Problem oder personelle Engpässe."
+        },
+        {
+            frage: "Welche Lösung passt bei fehlender Ware?",
+            richtig: "Wir werden die fehlende Ware umgehend nachliefern.",
+            antworten: ["Wir werden die fehlende Ware umgehend nachliefern.", "Wir werden die Ware nicht mehr liefern.", "Sie müssen alles neu bestellen."],
+            erklaerung: "Bei unvollständiger Lieferung bietet man eine Nachlieferung an."
+        },
+        {
+            frage: "Welche Lösung passt bei einem Rechnungsfehler?",
+            richtig: "Wir werden die Rechnung sofort prüfen und korrigieren.",
+            antworten: ["Wir werden die Rechnung sofort prüfen und korrigieren.", "Wir werden eine Besprechung abhalten.", "Wir werden den Termin verschieben."],
+            erklaerung: "Bei einem Rechnungsfehler muss man die Rechnung prüfen und korrigieren. Falls zu viel bezahlt wurde, kann man den Betrag erstatten."
+        },
+        {
+            frage: "Wann darf man eine Wiedergutmachung anbieten?",
+            richtig: "wenn sie in der Aufgabe steht oder erlaubt ist",
+            antworten: ["wenn sie in der Aufgabe steht oder erlaubt ist", "immer", "nie"],
+            erklaerung: "Wichtig: Rabatt, Gutschein oder Erstattung nur schreiben, wenn die Aufgabe oder die Teamleitung das erlaubt."
+        },
+        {
+            frage: "Welcher Satz passt als Wiedergutmachung?",
+            richtig: "Als Wiedergutmachung möchten wir Ihnen einen Rabatt anbieten.",
+            antworten: ["Als Wiedergutmachung möchten wir Ihnen einen Rabatt anbieten.", "Sie bekommen nichts.", "Das ist Ihre Schuld."],
+            erklaerung: "Dieser Satz ist höflich. Aber: Nur benutzen, wenn Rabatt oder Entgegenkommen in der Aufgabe erlaubt ist."
+        },
+        {
+            frage: "Welcher Satz passt als höflicher Schluss?",
+            richtig: "Sollten Sie noch Fragen haben, zögern Sie bitte nicht, uns zu kontaktieren.",
+            antworten: ["Sollten Sie noch Fragen haben, zögern Sie bitte nicht, uns zu kontaktieren.", "Schreiben Sie uns bitte nicht mehr.", "Das war alles."],
+            erklaerung: "Ein höflicher Schluss zeigt Servicebereitschaft und passt gut in berufliche E-Mails."
+        },
+        {
+            frage: "Was ist die wichtigste Prüfungsregel?",
+            richtig: "Pflichtpunkte zuerst schreiben.",
+            antworten: ["Pflichtpunkte zuerst schreiben.", "Immer Rabatt anbieten.", "Nur sehr kurz antworten."],
+            erklaerung: "In der Prüfung zuerst die Pflichtpunkte aus der Teamleitungs-E-Mail bearbeiten. Optionale Punkte nur schreiben, wenn sie erlaubt sind."
+        },
+        {
+            frage: "Welche Struktur passt für eine Antwort auf Beschwerde?",
+            richtig: "Dank, Entschuldigung, Grund, Lösung, Schluss",
+            antworten: ["Dank, Entschuldigung, Grund, Lösung, Schluss", "Meinung, Beispiel, Vorteil, Nachteil", "Name, Hobby, Beruf, Familie"],
+            erklaerung: "Die sichere Struktur ist: Dank für Nachricht, Entschuldigung, Grund erklären, Lösung anbieten, höflicher Schluss."
+        },
+        {
+            frage: "Was passt in den Lösungsteil?",
+            richtig: "Außerdem werden wir künftig genauer kontrollieren, damit sich solche Probleme nicht wiederholen.",
+            antworten: ["Außerdem werden wir künftig genauer kontrollieren, damit sich solche Probleme nicht wiederholen.", "Wir machen nichts.", "Das Problem interessiert uns nicht."],
+            erklaerung: "In einer guten Antwort sagt man nicht nur, was jetzt passiert, sondern auch, wie man solche Fehler künftig vermeiden möchte."
+        }
+    ]
+
 };
 
 function mischen(liste) {
@@ -747,6 +842,7 @@ zeigeMenu();
 
 </body>
 </html>
+
 
 
 
